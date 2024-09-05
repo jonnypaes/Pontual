@@ -44,3 +44,20 @@ function getPermissions() {
         console.log('Error creating notification:', notificationError);
     }
 }
+
+function scheduleNotification(hour, minute, content) {
+    const now = new Date();
+    const targetTime = new Date(now);
+    targetTime.setHours(hour, minute, 0, 0);
+    const timeUntilNotification = targetTime - now;
+
+    setTimeout(function () {
+        showScheduledNotification(content);
+    }, timeUntilNotification);
+}
+
+function showScheduledNotification(content) {
+    self.registration.showNotification('Scheduled Notification', {
+        body: content
+    });
+}

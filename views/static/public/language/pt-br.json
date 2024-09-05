@@ -1,0 +1,30 @@
+{
+  "LOCALE": "Português (Brasil)",
+  "APP_NAME": "O Pontual",
+  "GENERAL": {
+    "EN_US_BUTTON": "English",
+    "PT_BR_BUTTON": "Português (Brasil)",
+    "RU_RU_BUTTON": "Русский",
+    "ES_ES_BUTTON": "Español",
+    "TERMS_SERVICE": "Termos de serviço",
+    "WELCOME": "Seja bem vindo ao aplicativo O Pontual! Por favor, leia nossos termos de uso e politica de privacidade",
+    "ACCEPT": "Aceito",
+    "DECLINE": "Não aceito",
+    "WORK_START": "Olá",
+    "WORK_PAUSE": "Bom almoço",
+    "WORK_RETURN": "Bom trabalho",
+    "WORK_END": "Até mais!",
+	"BEFORE_START": "Olá! Não esqueça de fazer o apontamento da entrada",
+    "BEFORE_PAUSE": "Olá! Não esqueça de fazer o apontamento da saída ao almoço",
+	"BEFORE_RETURN": "Olá! Não esqueça de fazer o apontamento do retorno do almoço",
+	"BEFORE_END": "Olá! Não esqueça de fazer o apontamento do saída do almoço",
+	"AFTER_START": "ATENÇÃO! Não esqueça de fazer o apontamento de retorno",
+    "AFTER_PAUSE": "ATENÇÃO! Não esqueça de fazer o apontamento da saída ao almoço",
+	"AFTER_RETURN": "ATENÇÃO! Não esqueça de fazer o apontamento do retorno do almoço",
+	"AFTER_END": "ATENÇÃO! Não esqueça de fazer o apontamento do saída",
+	"ABNORMAL_ON": "Por favor, explique o motivo da entrada",
+    "ABNORMAL_OFF": "Por favor, explique o motivo da saída",
+    "WARNING_BEFORE": "Lembrete - Horário de apontamento se aproximando",
+    "WARNING_AFTER": "ATENÇÃO - Horário excedente. Faça o apontamento!"
+  }
+}

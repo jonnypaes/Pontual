@@ -71,7 +71,8 @@ while ($true) {
 		}		
 		0 {
          # Exit the script
-         exit
+         wsl --shutdown
+		 exit
         }
         default {
           $message = "Invalid choice, please try again."

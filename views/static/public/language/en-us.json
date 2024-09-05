@@ -1,0 +1,30 @@
+{
+  "LOCALE": "English",
+  "APP_NAME": "The Punctual",
+  "GENERAL": {
+    "EN_US_BUTTON": "English",
+    "PT_BR_BUTTON": "Português (Brasil)",
+    "RU_RU_BUTTON": "Русский",
+    "ES_ES_BUTTON": "Español",
+    "TERMS_SERVICE": "Terms of Service",
+    "WELCOME": "Welcome to The Punctual app! Please read our terms of use and privacy policy.",
+    "ACCEPT": "Accept",
+    "DECLINE": "Decline",
+    "WORK_START": "Hello",
+    "WORK_PAUSE": "Good lunch",
+    "WORK_RETURN": "Good work",
+    "WORK_END": "See you later!",
+    "BEFORE_START": "Hello! Don't forget to clock in when you start work",
+    "BEFORE_PAUSE": "Hello! Don't forget to clock out for lunch",
+    "BEFORE_RETURN": "Hello! Don't forget to clock in after lunch",
+    "BEFORE_END": "Hello! Don't forget to clock out when you finish work",
+    "AFTER_START": "ATTENTION! Don't forget to clock in when you return to work",
+    "AFTER_PAUSE": "ATTENTION! Don't forget to clock out for lunch",
+    "AFTER_RETURN": "ATTENTION! Don't forget to clock in after lunch",
+    "AFTER_END": "ATTENTION! Don't forget to clock out when you finish work",
+    "ABNORMAL_ON": "Please, explain the reason for your clock-in",
+    "ABNORMAL_OFF": "Please, explain the reason for your clock-out",
+    "WARNING_BEFORE": "Reminder - Clock-in time approaching",
+    "WARNING_AFTER": "ATTENTION - Overtime! Please clock your hours!"
+  }
+}

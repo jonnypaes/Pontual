@@ -1,6 +1,15 @@
 ## Release Notes
 
 
+### Pontual 3.0a
+
+- [x]  Adicionar listener event foreground / background
+- [x]  Atrelar notificações aos horários
+- [x]  Criar resources com mensagens interativas (i18n) multi-idiomas
+- [x]  Criar termos de uso e privacidade
+- [x]  Adição de diagramas de ação, eventos e funções
+- [x]  Adição de Redis + NGINX para balanceamento de carga e distribuição eficiente.
+
 ### Pontual 2.0a
 
 - [x]  Divisão e estruturação de front-end por eventos (onCreate, onChange e onListen) <br>

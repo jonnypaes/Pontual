@@ -1,8 +1,12 @@
+//const warningBefore = i18n.WARNING_BEFORE;
+//const warningAfter = i18n.WARNING_AFTER
+
 const box = document.getElementById('box');
 const buttonBox = document.querySelector('.button-container');
 const Container = document.querySelector('.container');
 const acceptButton = document.getElementById('acceptButton');
 const denyButton = document.getElementById('denyButton');
+
 let animationInterval;
 
 acceptButton.addEventListener('click', () => {

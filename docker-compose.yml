@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 services:
   web:
     image: pontual.app:1.0
@@ -11,9 +11,14 @@ services:
     volumes:
       - .:/data
     ports:
-      - "5000:80" # Change the port mapping to expose port 80
+      - "5000:80"
     networks:
       - MyNetwork
+    deploy:
+      resources:
+        limits:
+          cpus: '0.9'
+          memory: '0.1GB'  
   db:
     image: mysql:5.7
     container_name: db
@@ -27,19 +32,48 @@ services:
       - "3306:3306"  
     expose:
       - "3306"      
+    pid: "host"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 59s
+      timeout: 5s
+      retries: 5 
     networks:
-      - MyNetwork
+      - MyNetwork      
+    deploy:
+      resources:
+        limits:
+          cpus: '0.9'
+          memory: '0.4GB'  
   nginx:
     image: nginx:latest
     container_name: nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./localhost.crt:/etc/nginx/ssl/localhost.crt
+      - ./localhost.key:/etc/nginx/ssl/localhost.key  
     ports:
-      - "80:80" # Expose Nginx on port 80
+      - "80:80"   
+      - "443:443"      
     depends_on:
       - web
     networks:
       - MyNetwork
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: '0.1GB'  
+  redis:
+    image: redis
+    container_name: redis    
+    hostname: redis
+    command: redis-server --save "" --appendonly no --maxclients 20000
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: '0.2GB'
 networks:
   MyNetwork:
-
+    driver: bridge
