@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>O Pontual - Dashboard</title>
+<link href='icons\favicon.ico' rel='icon' type='image/x-icon'/>
+</head>
+<body>
+    <h1>Pontual - Acesso</h1>
+    {% if error_message %}
+    <div class="error">
+        <p>{{ error_message }}</p>
+    </div>
+    {% endif %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>EMPRESA_NOME</th>
+                <th>FUNCIONARIO_NOME</th>
+                <th>CONTADOR</th>
+				<th>ESTADO</th>
+                <th>DATA</th>
+                <th>HORA</th>
+                <th>LATITUDE</th>
+                <th>LONGITUDE</th>
+                <th>DESCRICAO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.EMPRESA_NOME }}</td>
+                    <td>{{ row.FUNCIONARIO_NOME }}</td>
+                    <td>{{ row.CONTADOR }}</td>
+					<td>{{ row.ESTADO }}</td>
+                    <td>{{ row.DATA_APONTAMENTO }}</td>
+                    <td>{{ row.HORA_APONTAMENTO }}</td>
+                    <td>{{ row.LATITUDE }}</td>
+                    <td>{{ row.LONGITUDE }}</td>
+                    <td>{{ row.DESCRICAO }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<style>
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+	</style>
+	
+</body>
+</html>
