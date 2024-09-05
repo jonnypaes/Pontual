@@ -19,7 +19,7 @@ O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferec
 - Docker Compose
 
 ## Composição
-**Pontual:1.0a**
+**Pontual:2.0a**
 - Python:3.8
 - Flask:2.0.3
 - MySQL:5.7

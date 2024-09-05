@@ -1,6 +1,17 @@
 ## Release Notes
 
 
+### Pontual 2.0a
+
+- [x]  Divisão e estruturação de front-end por eventos (onCreate, onChange e onListen) <br>
+- [x]  Fila de processamento e estruturação de base do front-end <br>
+- [x]  Estrutura de PWA (Aplicativo) para permitir usar o OnListener rodando em segundo plano <br>
+- [x]  Adição de NGINX para garantir base de distribuição de carga <br>
+- [x]  Adição de parâmetros para testes unitários <br>
+- [x]  Lógica para classificar atrasos e tipo de evento (entrada, almoço, retorno e saída) <br>
+- [x]  Lógica para surgir campo de texto para orientações ao usuário e campo input para adição da descrição de atraso <br>
+- [x]  Ajustar estética de novos ítens de interface de front-end do funcionário <br>
+
 ### Pontual 1.0a
 
 - [x]  Docker:final <br>

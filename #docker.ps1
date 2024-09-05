@@ -47,7 +47,7 @@ while ($true) {
         4 {
             # MySQL
             Write-Host "Senha: mudar123"
-            docker exec -it "$dbPath" mysql --host=127.0.0.1 -u root -p
+            docker exec -it "$dbPath" mysql --host=localhost -u root -p
             break
         }
         5 {
