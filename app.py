@@ -33,7 +33,8 @@ def showFuncionario():
             id_evento = 0
             latitude = data.get('latitude')
             longitude = data.get('longitude')
-            descricao = 'TESTE2'
+            user_agent = data.get('user-agent')
+            descricao = data.get('descricao')
             
             con = mysql.connect()
             cur = con.cursor()
@@ -43,7 +44,7 @@ def showFuncionario():
             else:
                 toggle_status = 0
             
-            values = (id_empresa, id_funcionario, id_evento, latitude, longitude, descricao)
+            values = (id_empresa, id_funcionario, id_evento, latitude, longitude, user_agent, descricao)
             cur.execute(MyQueries.INSERT_APONTAMENTOS, values)
           
             con.commit()

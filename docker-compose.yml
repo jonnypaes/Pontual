@@ -11,11 +11,9 @@ services:
     volumes:
       - .:/data
     ports:
-      - "5000:5000"
-    depends_on:
-      - db
+      - "5000:80" # Change the port mapping to expose port 80
     networks:
-      - MyNetwork  
+      - MyNetwork
   db:
     image: mysql:5.7
     container_name: db
@@ -24,13 +22,24 @@ services:
       MYSQL_ROOT_PASSWORD: mudar123
       MYSQL_DATABASE: PONTUAL
       MYSQL_ROOT_HOST: "%"
-      #MYSQL_USER: root
-      TZ: America/Sao_Paulo   
-    networks:
-      - MyNetwork  
+      TZ: America/Sao_Paulo
     ports:
-      - "3306:3306" 
-    #volumes:
-    #  - /var/lib/mysql:/var/lib/mysql
+      - "3306:3306"  
+    expose:
+      - "3306"      
+    networks:
+      - MyNetwork
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80" # Expose Nginx on port 80
+    depends_on:
+      - web
+    networks:
+      - MyNetwork
 networks:
   MyNetwork:
+
