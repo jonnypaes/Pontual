@@ -1,0 +1,112 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>O Pontual</title>
+<link href='icons\favicon.ico' rel='icon' type='image/x-icon'/>
+<link rel="stylesheet" type="text/css" href="src\css\funcionario\skin-1.css"/>
+<script src="src\js\funcionario.js"></script>
+<link href="icons\icon.png" rel="icon" sizes="96x96"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+</head>
+
+<script>
+var latitude;
+var longitude;
+var checkbox = document.getElementById("toggle");
+var isChecked;
+var descricao;
+</script>
+
+<script async='async' type='text/javascript'>
+//<![CDATA[  
+checkbox.addEventListener("change", async function () {
+    isChecked = checkbox.checked;
+    try {
+        await getLocation();
+        sendDataToServer();
+    } catch (error) {
+        console.error("Error obtaining geolocation data:", error);
+    }
+});
+
+async function getLocation() {
+    return new Promise(async (resolve, reject) => {
+        if (!latitude || !longitude) {
+            // If latitude or longitude is empty, obtain the geolocation data
+            try {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        latitude = position.coords.latitude;
+                        longitude = position.coords.longitude;
+                        document.getElementById("latitude").value = latitude;
+                        document.getElementById("longitude").value = longitude;
+                        resolve({ latitude, longitude });
+                    }, function (error) {
+                        reject(error);
+                    });
+                } else {
+                    throw new Error("Geolocation is not supported by this browser.");
+                }
+            } catch (error) {
+                reject(error);
+            }
+        } else {
+            // If latitude and longitude are already available, resolve immediately
+            resolve({ latitude, longitude });
+        }
+    });
+}
+
+async function sendDataToServer() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/funcionario", true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+    try {
+	    await getLocation();
+        xhr.send(JSON.stringify({
+            latitude,
+            longitude,
+            isChecked
+        }));
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log(xhr.status);
+        } else {
+            console.error("code:" + xhr.status);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error("Error:" + xhr.responseText);
+    };
+}
+//]]>
+</script>
+
+<body onLoad="getLocation()">
+
+  <form id="myForm" action="/submit" method="POST">
+	<input type="checkbox" id="toggle" name="toggle" value="is_on" onClick="sendDataToServer()"/>	
+	<label for="toggle" class="toy-toggle">
+		<span class="border1"></span>
+		<span class="border2"></span>
+		<span class="border3"></span>
+		<span class="handle">
+			<span class="handle-off"></span>
+			<span class="handle-on"></span>
+		</span>
+	</label>
+	<input type="hidden" id="textBox" name="textBox">  
+	<input type="submit" id="hiddenSubmit" style="display:none">
+	<input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">  
+  </form>
+</body>
+</html>
