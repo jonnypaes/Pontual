@@ -1,71 +1,115 @@
 <!Doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
+<html dir='ltr' lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta charset='UTF-8'>
 <title>O Pontual</title>
+<script src='public/language/pt-br.json'></script>
 <link href='public/icons/favicon.ico' rel='icon' type='image/x-icon'/>
-<link rel="stylesheet" type="text/css" href="src\css\funcionario\skin-1.css"/>
-<script  async='async' src="src\js\funcionario\api.js"></script>
-<script async='async' src="src\js\funcionario\base.js"></script>
-<script src="src\js\funcionario\events.js"></script>
-<script async='async' src="src\js\funcionario\functions.js"></script>
-<script async='async' src="src\js\funcionario\ui.js"></script>
-<link href="public/icons/mipmap-xxxhdpi/ic_launcher.png" rel="icon" sizes="192x192"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="O Pontual - Um aplicativo minimalista para apontamento">
-<link rel="manifest" href="public/manifest.json">
-<meta content="yes" name="mobile-web-app-capable"/>
-<meta content="yes" name="apple-mobile-web-app-capable"/>
+<link rel='stylesheet' type='text/css' href='src\css\funcionario\skin-1.css'/>
+<script src='src\js\funcionario\events.js'></script>
+<script async='async' src='src\js\funcionario\language.js'></script>
+<script async='async' src='src\js\funcionario\api.js'></script>
+<script async='async' src='src\js\funcionario\base.js'></script>
+<script async='async' src='src\js\funcionario\functions.js'></script>
+<script async='async' src='src\js\funcionario\ui.js'></script>
+<script async='async' src='src\js\funcionario\listener.js'></script>
+<link href='public/icons/mipmap-xxxhdpi/ic_launcher.png' rel='icon' sizes='192x192'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta name='description' content='O Pontual - Um aplicativo minimalista para apontamento'>
+
+<!-- Open Graph -->
+<meta name='og:title' content='O Pontual'>
+<meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento'>
+<meta name='og:image' content='public/graph/512x512.jpg'>
+
+<!-- PWA -->
+<link rel='manifest' href='public/manifest.json'>
+<meta content='yes' name='mobile-web-app-capable'/>
+<meta content='yes' name='apple-mobile-web-app-capable'/>
 </head>
 
+<script>
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+			if ('Notification' in window) {
+				Notification.requestPermission().then(function (permission) {
+					if (permission === 'granted') {
+						scheduleNotifications(notificationTimes);
+					}
+				});
+			}
+		}).catch(function(error) {
+			console.error('Service Worker registration failed:', error);
+		});
+	}
+
+	function scheduleNotifications(notificationTimes) {
+		notificationTimes.forEach(function(time) {
+			const notificationData = {
+				action: 'scheduleNotification',
+				hour: time.hour,
+				minute: time.minute,
+				content: time.content
+			};
+		});
+	}
+</script>
+
+<!-- App Base Settings -->
 <script async='async' type='text/javascript'>
 var latitude;
 var longitude;
-var checkbox = document.getElementById("toggle");
+var checkbox = document.getElementById('toggle');
 var isChecked;
 var descricao;
 const DEFAULT_STATE = true;
 var checkState = DEFAULT_STATE;
 </script>
 
-<script>
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('service-worker.js')
-			.then(function(registration) {
-				console.log('Service Worker registered with scope:', registration.scope);
-			})
-			.catch(function(error) {
-				console.error('Service Worker registration failed:', error);
-			});
-	}
+<!-- Language Fetch -->
+<script async='async' type='text/javascript'> 
+var language;
+async function getLanguage() {
+  try {
+    const response = await fetch('public/language/pt-br.json');
+    const i18n = await response.json();
+    language = ReceiveString(i18n);
+	// showNotification(language.AppName);
+	
+  } catch (error) {
+    console.error('Error: ', error);
+  }
+}
 </script>
 
-<body onLoad="onCreate()">
-  <form id="myForm" action="/submit" method="POST">
-	<div class="centered-container">
-		<div class="message-box" id="message"></div>
-		<input type="checkbox" id="toggle" onClick="onChange()"/>	
-		<label for="toggle" class="toy-toggle">
-			<span class="border1"></span>
-			<span class="border2"></span>
-			<span class="border3"></span>
-			<span class="handle">
-				<span class="handle-off"></span>
-				<span class="handle-on"></span>
+<body onLoad='onCreate()'>
+  <form id='myForm' action='/submit' method='POST'>
+	<div class='centered-container'>
+		<div class='message-box' id='message'></div>
+		<input type='checkbox' id='toggle' onClick='onChange()'/>	
+		<label for='toggle' class='toy-toggle'>
+			<span class='border1'></span>
+			<span class='border2'></span>
+			<span class='border3'></span>
+			<span class='handle'>
+				<span class='handle-off'></span>
+				<span class='handle-on'></span>
 			</span>
 		</label>
-		<div class="text-box" id="container">		
-			<input type="text" class="container" id="box" value=""></input>
-			<div class="button-container">
-				<button id="acceptButton">✔</button>
-				<button id="denyButton">✘</button>
+		<div class='text-box' id='container'>		
+			<input type='text' class='container' id='box' value=''></input>
+			<div class='button-container'>
+				<button id='acceptButton'>✔</button>
+				<button id='denyButton'>✘</button>
 			
 		</div>
 		
-	<input type="hidden" id="textBox" name="textBox">  
-	<input type="hidden" id="latitude" name="latitude">
-    <input type="hidden" id="longitude" name="longitude">  
-	<input type="submit" id="hiddenSubmit" style="display:none">
+	<input type='hidden' id='textBox' name='textBox'>  
+	<input type='hidden' id='latitude' name='latitude'>
+    <input type='hidden' id='longitude' name='longitude'>  
+	<input type='submit' id='hiddenSubmit' style='display:none'>
   </form>
 </body>
 </html>

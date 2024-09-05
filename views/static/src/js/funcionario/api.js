@@ -33,42 +33,33 @@ function sendDataToServer() {
 }
 
 async function getLocation() {
-    return new Promise(async (resolve, reject) => {
-        if (!latitude || !longitude) {
-            try {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        latitude = position.coords.latitude;
-                        longitude = position.coords.longitude;
-                        document.getElementById("latitude").value = latitude;
-                        document.getElementById("longitude").value = longitude;
-                        resolve({ latitude, longitude });
-                    }, function (error) {
-                        reject(error);
-                    });
-                } else {
-                    throw new Error("Geolocation is not supported by this browser.");
-                }
-            } catch (error) {
-                reject(error);
-            }
+  return new Promise(async (resolve, reject) => {
+    if (!latitude || !longitude) {
+      try {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              latitude = position.coords.latitude;
+              longitude = position.coords.longitude;
+              document.getElementById("latitude").value = latitude;
+              document.getElementById("longitude").value = longitude;
+              resolve({ latitude, longitude });
+            },
+            function (error) {
+              reject(error);
+            },
+            { enableHighAccuracy: false }
+          );
         } else {
-            resolve({ latitude, longitude });
+          throw new Error("Geolocation is not supported by this browser.");
         }
-    });
-}
-
-function getNotification() {
-    try {
-        if ("Notification" in window) {
-            const permission = Notification.requestPermission();
-            handlePermission(permission);
-        } else {
-            console.log("Notifications API is not supported in this browser.");
-        }
-    } catch (error) {
-        console.error("An error occurred:", error);
+      } catch (error) {
+        reject(error);
+      }
+    } else {
+      resolve({ latitude, longitude });
     }
+  });
 }
 
 function handlePermission(permission) {
@@ -84,8 +75,22 @@ function handlePermission(permission) {
     }
 }
 
-function showNotification(notificationText) {
+function getNotification() {
     try {
+        if ("Notification" in window) {
+            const permission = Notification.requestPermission();
+            handlePermission(permission);
+        } else {
+            console.log("Notifications API is not supported in this browser.");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}
+
+function showNotification(notificationText) {
+	try {
+		//getNotification();
         new Notification("Pontual!", {
             body: notificationText || "Test notification",
             icon: "icons/icon.png"

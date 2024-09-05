@@ -13,5 +13,5 @@ RUN chmod -R a+rwx controllers
 EXPOSE 5000
 ENV NAME PONTUAL
 WORKDIR /
-COPY ./db.sql /docker-entrypoint-initdb.d
+COPY db.sql /docker-entrypoint-initdb.d
 CMD ["python","app.py"]

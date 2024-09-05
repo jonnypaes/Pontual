@@ -1,0 +1,30 @@
+{
+  "LOCALE": "Español",
+  "APP_NAME": "El Puntual",
+  "GENERAL": {
+    "EN_US_BUTTON": "English",
+    "PT_BR_BUTTON": "Português (Brasil)",
+    "RU_RU_BUTTON": "Русский",
+    "ES_ES_BUTTON": "Español",
+    "TERMS_SERVICE": "Términos de servicio",
+    "WELCOME": "¡Bienvenido a la aplicación El Puntual! Por favor, lea nuestros términos de uso y política de privacidad.",
+    "ACCEPT": "Aceptar",
+    "DECLINE": "Rechazar",
+    "WORK_START": "Hola",
+    "WORK_PAUSE": "Buen almuerzo",
+    "WORK_RETURN": "Buen trabajo",
+    "WORK_END": "¡Hasta luego!",
+    "BEFORE_START": "¡Hola! No olvides marcar la entrada cuando comiences a trabajar",
+    "BEFORE_PAUSE": "¡Hola! No olvides marcar la salida para almorzar",
+    "BEFORE_RETURN": "¡Hola! No olvides marcar la entrada después del almuerzo",
+    "BEFORE_END": "¡Hola! No olvides marcar la salida cuando termines de trabajar",
+    "AFTER_START": "¡ATENCIÓN! No olvides marcar la entrada cuando regreses al trabajo",
+    "AFTER_PAUSE": "¡ATENCIÓN! No olvides marcar la salida para almorzar",
+    "AFTER_RETURN": "¡ATENCIÓN! No olvides marcar la entrada después del almuerzo",
+    "AFTER_END": "¡ATENCIÓN! No olvides marcar la salida cuando termines de trabajar",
+    "ABNORMAL_ON": "Por favor, explica la razón de tu entrada",
+    "ABNORMAL_OFF": "Por favor, explica la razón de tu salida",
+    "WARNING_BEFORE": "Recordatorio - Se acerca la hora de marcar",
+    "WARNING_AFTER": "¡ATENCIÓN - ¡Horas extras! ¡Por favor, registra tus horas!"
+  }
+}
