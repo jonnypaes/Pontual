@@ -5,7 +5,7 @@
   "name": "O Pontual",
   "scope": "/",
   "display": "standalone",
-  "start_url": "funcionario.html"
+  "start_url": "funcionario.html",
   "short_name": "Pontual",
   "theme_color": "#FFFFFF",
   "description": "O Pontual - Um aplicativo minimalista para apontamento",
