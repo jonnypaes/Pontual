@@ -2,8 +2,8 @@
 
 - [Sequence](#sequence)
 - [Flow](#flow)
-- [Events](#events-create)
-- [Events](#events-change)
+- [Events - Create](#events-create)
+- [Events - Change](#events-change)
 
 ### Sequence
 Diagrama de sequência lógica do [front-end](../../../views/static/funcionario.html)
