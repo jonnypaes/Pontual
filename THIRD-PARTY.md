@@ -1,6 +1,6 @@
 # Componentes de Terceiros
 
-Este arquivo contém informações sobre os componentes de terceiros utilizados neste projeto.
+Este arquivo contém informações sobre os componentes de terceiros utilizados neste projeto com base no arquivo [requirements.txt](requirements.txt).
 
 ## Flask: 2.0.3
 
