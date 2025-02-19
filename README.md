@@ -31,11 +31,11 @@ Para mais informações sobre componentes usados no projeto, leia o arquivo requ
 
 ## Interface
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;"> 
-<figure> <img width="300" height="475" src="https://raw.githubusercontent.com/JonathanAPaes/Software-Product/main/docs/architecture/screenshots/checkbox.on.png"> </figure>
-<figure> <img width="300" height="475" src="https://raw.githubusercontent.com/JonathanAPaes/Software-Product/main/docs/architecture/screenshots/checkbox.off.png"> </figure>
+<figure> <img width="300" height="475" src="../../../docs/architecture/screenshots/checkbox.on.png"> </figure>
+<figure> <img width="300" height="475" src="../../../docs/architecture/screenshots/checkbox.off.png"> </figure>
 </div>
 
-Caso queira ter uma prévia do front-end clique [aqui](https://jonathanapaes.github.io/Software-Product/views/static/funcionario.html)
+Caso queira ter uma prévia do front-end clique [aqui](../../../views/static/funcionario.html)
 
 ## Instalação
 - Extraia o conteúdo do zip em um diretório
