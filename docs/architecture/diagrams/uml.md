@@ -2,8 +2,8 @@
 
 - [Sequence](#sequence)
 - [Flow](#flow)
-- [Events - Create](#events-create)
-- [Events - Change](#events-change)
+- [Create (Event)](#create)
+- [Change (Event)](#change)
 
 ### Sequence
 Diagrama de sequência lógica do [front-end](../../../views/static/funcionario.html)
@@ -15,12 +15,12 @@ Diagrama referente a interação do usuário
 
 ![Flow](flow.svg)
 
-### Events - Create
+### Create (Event)
 Diagrama referente aos [Eventos](../../../views/static/src/js/funcionario/events.js)
 
 ![OnCreate](flow-oncreate.svg)
 
-### Events - Change
+### Change (Event)
 Diagrama referente aos [Eventos](../../../views/static/src/js/funcionario/events.js)
 
 ![OnChange](flow-onchange.svg)
