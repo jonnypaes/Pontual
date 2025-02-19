@@ -1,12 +1,14 @@
-title: O Pontual
+title: Pontual
 description: O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferece uma ampla gama de dados para registro de apontamento em sua empresa.
 
 permalink: pretty
 
+favicon: /views/static/public/icons/favicon.ico
+
 image:
-  path: /views/static/public/graph/512x512.jpg
-  height: 512
-  width: 512
+  path: /views/static/public/graph/1280x720.jpg
+  width: 1280
+  height: 720
   alt: O Pontual
 plugins:
   - jekyll-seo-tag
