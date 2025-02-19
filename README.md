@@ -60,4 +60,4 @@ Para mais informações, leia o arquivo de [licença](LICENSE)
 
 ## Links
 
-[O Pontual](https://opontual.app) | [GitHub](https://github.com/jonathanapaes/Software-Product) | [GitHub Sites](https://jonathanapaes.github.io/Software-Product) | [Board](https://github.com/users/JonathanAPaes/projects/1)
+[O Pontual](https://opontual.app) | [GitHub](https://github.com/JonnyPaes/Pontual) | [GitHub Sites](https://JonnyPaes.github.io/Pontual)
