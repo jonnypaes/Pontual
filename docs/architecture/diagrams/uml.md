@@ -6,7 +6,7 @@
 - [Events](#events-change)
 
 ### Sequence
-Diagrama de sequência lógica do [front-end](https://jonathanapaes.github.io/Software-Product/views/static/funcionario.html)
+Diagrama de sequência lógica do [front-end](../../../views/static/funcionario.html)
 
 ![Sequence](sequence.svg)
 
