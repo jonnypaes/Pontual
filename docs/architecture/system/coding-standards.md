@@ -11,6 +11,7 @@
 - Idioma funcional: Português (Brasil)
 - Idioma estrutural: Inglês 
 - Idiomas disponíveis: ptBR, enUS, esES, ruRU
+- Caminho: Relativo
 
 ## Sintaxes
 
