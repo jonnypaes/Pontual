@@ -27,7 +27,7 @@ O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferec
 
 Para mais informações tecnicas, verifique a [Documentação](docs/index.md)
 
-Para mais informações sobre componentes usados no projeto, leia o arquivo [requirements.txt](requirements.txt) ou [Componentes de Terceiros](THIRD-PARTY.md)
+Para mais informações sobre componentes usados no projeto, leia [Componentes de Terceiros](THIRD-PARTY.md)
 
 ## Interface
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;"> 
