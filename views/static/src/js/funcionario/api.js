@@ -67,9 +67,7 @@ async function getLocation() {
 async function getNotification() {
     try {
         if ("Notification" in window) {
-            const permission = (Notification.permission === "default") 
-                ? await new Promise(resolve => Notification.requestPermission(resolve)) // Ensures Firefox compatibility
-                : Notification.permission;
+            const permission = await new Promise(resolve => Notification.requestPermission(resolve));
             
             console.log("Notification permission status:", permission);
             handlePermission(permission);
