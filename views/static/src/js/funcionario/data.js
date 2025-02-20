@@ -1,4 +1,5 @@
 // src/js/funcionario/data.js
+
 function getUrlParameters(parameter, staticURL, decode) {
   var currLocation = staticURL && staticURL.length ? staticURL : window.location.search;
   var urlParams = new URLSearchParams(currLocation);
@@ -22,3 +23,4 @@ function getUrlParameters(parameter, staticURL, decode) {
 
 const isDebugMode = getUrlParameters('debug', '', false);
 const isChecked = getUrlParameters('checked', '', true);
+const isVerbose = getUrlParameters('verbose', '', false);
