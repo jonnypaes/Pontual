@@ -68,7 +68,7 @@ async function getNotification() {
     try {
         if ("Notification" in window) {
             const permission = (Notification.permission === "default") 
-                ? await Notification.requestPermission() 
+                ? await new Promise(resolve => Notification.requestPermission(resolve)) // Ensures Firefox compatibility
                 : Notification.permission;
             
             console.log("Notification permission status:", permission);
