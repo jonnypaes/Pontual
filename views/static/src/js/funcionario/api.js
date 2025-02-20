@@ -133,4 +133,3 @@ function handleNotificationError(error, notificationText) {
         console.error("Error creating notification:", error);
     }
 }
-getNotification();
