@@ -61,7 +61,7 @@ self.addEventListener('push', function(event) {
   listenerEvent();
   const options = {
     body: event.data.text(),
-    icon: 'icons/icon.png'
+    icon: 'public/icons/icon.png'
   };
 
   event.waitUntil(
