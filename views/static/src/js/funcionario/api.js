@@ -91,17 +91,14 @@ function showNotification(notificationText) {
 
     if (Notification.permission === "granted") {
         try {
-            // Try using the Notifications API directly
             new Notification("Pontual!", {
                 body: notificationText || "Test notification",
                 icon: "public/icons/icon.png"
             });
         } catch (error) {
-            // If an error occurs (such as the 'Illegal constructor' error), fallback to service worker
             if (error instanceof TypeError && error.message.includes("Illegal constructor")) {
                 console.log("Error creating notification, falling back to service worker:", error);
 
-                // Fallback to service worker notification
                 if ("serviceWorker" in navigator) {
                     navigator.serviceWorker.ready.then((registration) => {
                         registration.showNotification("Pontual!", {
@@ -118,8 +115,12 @@ function showNotification(notificationText) {
                 console.error("Error creating notification:", error);
             }
         }
+    } else if (Notification.permission === "default") {
+        console.log("Notification permission is default. Requesting permission...");
+        getNotification(); // Request permission if it is still in default state
     } else {
         console.log("Notification permission not granted.");
         getNotification(); // Request permission if not granted
     }
 }
+
