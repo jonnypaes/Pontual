@@ -67,7 +67,7 @@ function showNotification(notificationText) {
 		//getNotification();
         new Notification("Pontual!", {
             body: notificationText || "Test notification",
-            icon: "icons/icon.png"
+            icon: "public/icons/icon.png"
         });
     } catch (notificationError) {
         console.log('Error creating notification:', notificationError);
