@@ -1,12 +1,13 @@
 const CACHE_VERSION = 'version-2'; // Increment the version for cache updates
-
 const CACHE_NAME = `${CACHE_VERSION}-static`;
-const urlsToCache = ['funcionario.html', 'funcionario.html'];
+
+// Remove duplicate URLs in the array
+const urlsToCache = ['funcionario.html']; // Ensure no duplicates
 
 self.addEventListener('message', function(event) {
     if (event.data && event.data.action === 'scheduleNotification') {
         scheduleNotification(event.data.hour, event.data.minute, event.data.content);
-		onListen();
+        onListen();
     }
 });
 
