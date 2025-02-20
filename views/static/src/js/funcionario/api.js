@@ -100,6 +100,19 @@ function showNotification(notificationText) {
     }
 }
 
+function handlePermission(permission) {
+    switch (permission) {
+        case "granted":
+            // showNotification('Notification Granted', 'Notifications are allowed');
+            break;
+        case "denied":
+            alert("The user denied permission for notifications.");
+            break;
+        default:
+            alert("Notification permission status: " + permission);
+    }
+}
+
 function handleNotificationError(error, notificationText) {
     if (error instanceof TypeError && error.message.includes("Illegal constructor")) {
         console.log("Error creating notification, falling back to service worker:", error);
@@ -118,18 +131,5 @@ function handleNotificationError(error, notificationText) {
         }
     } else {
         console.error("Error creating notification:", error);
-    }
-}
-
-function handlePermission(permission) {
-    switch (permission) {
-        case "granted":
-            // showNotification('Notification Granted', 'Notifications are allowed');
-            break;
-        case "denied":
-            alert("The user denied permission for notifications.");
-            break;
-        default:
-            alert("Notification permission status: " + permission);
     }
 }
