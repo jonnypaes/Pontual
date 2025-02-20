@@ -62,25 +62,35 @@ async function getLocation() {
   });
 }
 
-function getNotification() {
-    if (!("Notification" in window)) {
-        console.log("Notifications API is not supported in this browser.");
-        return;
-    }
-
-    if (Notification.permission === "default") {
-        Notification.requestPermission()
-            .then((permission) => {
-                console.log("Notification permission status:", permission);
-            })
-            .catch((error) => {
-                console.error("Error requesting notification permission:", error);
-            });
-    } else {
-        console.log("Notification permission already:", Notification.permission);
+// Function to handle the notification permission response
+function handlePermission(permission) {
+    switch (permission) {
+        case "granted":
+            triggerNotifications(); //showNotification('Notification Granted', 'Notifications are allowed');
+            break;
+        case "denied":
+            alert("The user denied permission for notifications.");
+            break;
+        default:
+            alert("Notification permission status: " + permission); //console.log("Notification status: " + permission);
     }
 }
 
+// Function to request notification permission
+async function getNotification() {
+    try {
+        if ("Notification" in window) {
+            const permission = await Notification.requestPermission();
+            handlePermission(permission);
+        } else {
+            alert("Notification permission may be deactivated.");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}
+
+// Function to display the notification
 function showNotification(notificationText) {
     if (!("Notification" in window)) {
         console.log("Notifications API is not supported in this browser.");
@@ -89,17 +99,14 @@ function showNotification(notificationText) {
 
     if (Notification.permission === "granted") {
         try {
-            // Try using the Notifications API directly
             new Notification("Pontual!", {
                 body: notificationText || "Test notification",
                 icon: "public/icons/icon.png"
             });
         } catch (error) {
-            // If an error occurs (such as the 'Illegal constructor' error), fallback to service worker
             if (error instanceof TypeError && error.message.includes("Illegal constructor")) {
                 console.log("Error creating notification, falling back to service worker:", error);
 
-                // Fallback to service worker notification
                 if ("serviceWorker" in navigator) {
                     navigator.serviceWorker.ready.then((registration) => {
                         registration.showNotification("Pontual!", {
@@ -121,4 +128,5 @@ function showNotification(notificationText) {
         getNotification(); // Request permission if not granted
     }
 }
+
 
