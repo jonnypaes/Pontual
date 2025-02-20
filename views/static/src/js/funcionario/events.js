@@ -1,5 +1,3 @@
-var checkbox = document.getElementById("toggle");
-
 // Handle Window load
 window.addEventListener("load", function() {
 	onCreate();
