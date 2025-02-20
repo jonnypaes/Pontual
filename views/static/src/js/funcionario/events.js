@@ -1,3 +1,5 @@
+// src/js/funcionario/events.js
+
 // Handle Window load
 window.addEventListener("load", function() {
 	onCreate();
