@@ -126,7 +126,7 @@ function handleNotificationError(error, notificationText) {
 function handlePermission(permission) {
     switch (permission) {
         case "granted":
-            showNotification('Notification Granted', 'Notifications are allowed');
+            // showNotification('Notification Granted', 'Notifications are allowed');
             break;
         case "denied":
             alert("The user denied permission for notifications.");
