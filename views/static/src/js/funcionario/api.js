@@ -80,9 +80,14 @@ async function getLocation() {
 async function getNotification() {
     try {
         if ("Notification" in window) {
-            const permission = await Notification.requestPermission();
-            console.log("Notification permission status:", permission);
-            handlePermission(permission);
+            if (Notification.permission === "default") {
+                const permission = await Notification.requestPermission();
+                console.log("Notification permission status:", permission);
+                handlePermission(permission);
+            } else {
+                console.log("Notification permission already:", Notification.permission);
+                handlePermission(Notification.permission);  // Handle permission status if it's already granted/denied
+            }
         } else {
             alert("Notification permission may be deactivated.");
         }
