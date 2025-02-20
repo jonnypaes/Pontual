@@ -62,32 +62,6 @@ async function getLocation() {
   });
 }
 
-function handlePermission(permission) {
-    switch (permission) {
-        case "granted":
-            showNotification();
-            break;
-        case "denied":
-            console.log("The user denied permission for notifications.");
-            break;
-        default:
-            console.log("Notification permission status: " + permission);
-    }
-}
-
-function getNotification() {
-    try {
-        if ("Notification" in window) {
-            const permission = Notification.requestPermission();
-            handlePermission(permission);
-        } else {
-            console.log("Notifications API is not supported in this browser.");
-        }
-    } catch (error) {
-        console.error("An error occurred:", error);
-    }
-}
-
 function showNotification(notificationText) {
 	try {
 		//getNotification();
@@ -97,5 +71,36 @@ function showNotification(notificationText) {
         });
     } catch (notificationError) {
         console.log('Error creating notification:', notificationError);
+    }
+}
+
+function getNotification() {
+    try {
+        if ("Notification" in window) {
+            // Request notification permission
+            Notification.requestPermission().then((permission) => {
+                handlePermission(permission);
+            }).catch((error) => {
+                console.error("Error requesting notification permission:", error);
+            });
+        } else {
+            console.log("Notifications API is not supported in this browser.");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}
+
+function handlePermission(permission) {
+    switch (permission) {
+        case "granted":
+            console.log("Notification permission granted!");
+            // Optionally, you can trigger notifications here or rely on your service worker
+            break;
+        case "denied":
+            console.log("The user denied permission for notifications.");
+            break;
+        default:
+            console.log("Notification permission status: " + permission);
     }
 }
