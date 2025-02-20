@@ -20,11 +20,11 @@
   <link rel='manifest' href='public/manifest.json'>
   <meta content='yes' name='mobile-web-app-capable'/>
   <meta content='yes' name='apple-mobile-web-app-capable'/>
-	
-  <script async='async' src='src\js\funcionario\data.js'></script>
+
   <script async='async' src='src\js\funcionario\debug.js'></script>
+  <script async='async' src='src\js\funcionario\data.js'></script>
   <script async='async' src='src\js\funcionario\listener.js'></script>
-<script>
+  <script>
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('service-worker.js').then(function(registration) {
 			if ('Notification' in window) {
@@ -49,9 +49,10 @@
 			};
 		});
 	}
-</script>
+  </script>
 
 </head>
+	
 <body onLoad='onCreate()'>
 
 <script async='async' src='src\js\funcionario\global.js'></script>
