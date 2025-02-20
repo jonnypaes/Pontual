@@ -62,45 +62,63 @@ async function getLocation() {
   });
 }
 
-function showNotification(notificationText) {
-	try {
-		//getNotification();
-        new Notification("Pontual!", {
-            body: notificationText || "Test notification",
-            icon: "public/icons/icon.png"
-        });
-    } catch (notificationError) {
-        console.log('Error creating notification:', notificationError);
-    }
-}
-
 function getNotification() {
-    try {
-        if ("Notification" in window) {
-            // Request notification permission
-            Notification.requestPermission().then((permission) => {
-                handlePermission(permission);
-            }).catch((error) => {
+    if (!("Notification" in window)) {
+        console.log("Notifications API is not supported in this browser.");
+        return;
+    }
+
+    if (Notification.permission === "default") {
+        Notification.requestPermission()
+            .then((permission) => {
+                console.log("Notification permission status:", permission);
+            })
+            .catch((error) => {
                 console.error("Error requesting notification permission:", error);
             });
-        } else {
-            console.log("Notifications API is not supported in this browser.");
-        }
-    } catch (error) {
-        console.error("An error occurred:", error);
+    } else {
+        console.log("Notification permission already:", Notification.permission);
     }
 }
 
-function handlePermission(permission) {
-    switch (permission) {
-        case "granted":
-            console.log("Notification permission granted!");
-            // Optionally, you can trigger notifications here or rely on your service worker
-            break;
-        case "denied":
-            console.log("The user denied permission for notifications.");
-            break;
-        default:
-            console.log("Notification permission status: " + permission);
+function showNotification(notificationText) {
+    if (!("Notification" in window)) {
+        console.log("Notifications API is not supported in this browser.");
+        return;
+    }
+
+    if (Notification.permission === "granted") {
+        try {
+            // Try using the Notifications API directly
+            new Notification("Pontual!", {
+                body: notificationText || "Test notification",
+                icon: "public/icons/icon.png"
+            });
+        } catch (error) {
+            // If an error occurs (such as the 'Illegal constructor' error), fallback to service worker
+            if (error instanceof TypeError && error.message.includes("Illegal constructor")) {
+                console.log("Error creating notification, falling back to service worker:", error);
+
+                // Fallback to service worker notification
+                if ("serviceWorker" in navigator) {
+                    navigator.serviceWorker.ready.then((registration) => {
+                        registration.showNotification("Pontual!", {
+                            body: notificationText || "Test notification",
+                            icon: "public/icons/icon.png"
+                        });
+                    }).catch((error) => {
+                        console.log("Error showing notification via Service Worker:", error);
+                    });
+                } else {
+                    console.log("Service workers are not supported.");
+                }
+            } else {
+                console.error("Error creating notification:", error);
+            }
+        }
+    } else {
+        console.log("Notification permission not granted.");
+        getNotification(); // Request permission if not granted
     }
 }
+
