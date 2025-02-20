@@ -34,19 +34,6 @@ function sendDataToServer() {
     };
 }
 
-function handlePermission(permission) {
-    switch (permission) {
-        case "granted":
-            showNotification('Notification Granted', 'Notifications are allowed');
-            break;
-        case "denied":
-            alert("The user denied permission for notifications.");
-            break;
-        default:
-            alert("Notification permission status: " + permission); //console.log("Notification status: " + permission);
-    }
-}
-
 async function getLocation() {
   return new Promise(async (resolve, reject) => {
     if (!latitude || !longitude) {
@@ -80,14 +67,12 @@ async function getLocation() {
 async function getNotification() {
     try {
         if ("Notification" in window) {
-            if (Notification.permission === "default") {
-                const permission = await Notification.requestPermission();
-                console.log("Notification permission status:", permission);
-                handlePermission(permission);
-            } else {
-                console.log("Notification permission already:", Notification.permission);
-                handlePermission(Notification.permission);  // Handle permission status if it's already granted/denied
-            }
+            const permission = (Notification.permission === "default") 
+                ? await Notification.requestPermission() 
+                : Notification.permission;
+            
+            console.log("Notification permission status:", permission);
+            handlePermission(permission);
         } else {
             alert("Notification permission may be deactivated.");
         }
@@ -109,31 +94,44 @@ function showNotification(notificationText) {
                 icon: "public/icons/icon.png"
             });
         } catch (error) {
-            if (error instanceof TypeError && error.message.includes("Illegal constructor")) {
-                console.log("Error creating notification, falling back to service worker:", error);
-
-                if ("serviceWorker" in navigator) {
-                    navigator.serviceWorker.ready.then((registration) => {
-                        registration.showNotification("Pontual!", {
-                            body: notificationText || "Test notification",
-                            icon: "public/icons/icon.png"
-                        });
-                    }).catch((error) => {
-                        console.log("Error showing notification via Service Worker:", error);
-                    });
-                } else {
-                    console.log("Service workers are not supported.");
-                }
-            } else {
-                console.error("Error creating notification:", error);
-            }
+            handleNotificationError(error, notificationText);
         }
-    } else if (Notification.permission === "default") {
-        console.log("Notification permission is default. Requesting permission...");
-        getNotification(); // Request permission if it is still in default state
     } else {
-        console.log("Notification permission not granted.");
+        console.log("Notification permission is not granted.");
         getNotification(); // Request permission if not granted
     }
 }
 
+function handleNotificationError(error, notificationText) {
+    if (error instanceof TypeError && error.message.includes("Illegal constructor")) {
+        console.log("Error creating notification, falling back to service worker:", error);
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.ready.then((registration) => {
+                registration.showNotification("Pontual!", {
+                    body: notificationText || "Test notification",
+                    icon: "public/icons/icon.png"
+                });
+            }).catch((error) => {
+                console.log("Error showing notification via Service Worker:", error);
+            });
+        } else {
+            console.log("Service workers are not supported.");
+        }
+    } else {
+        console.error("Error creating notification:", error);
+    }
+}
+
+function handlePermission(permission) {
+    switch (permission) {
+        case "granted":
+            showNotification('Notification Granted', 'Notifications are allowed');
+            break;
+        case "denied":
+            alert("The user denied permission for notifications.");
+            break;
+        default:
+            alert("Notification permission status: " + permission);
+    }
+}
