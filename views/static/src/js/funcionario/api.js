@@ -64,10 +64,10 @@ async function getLocation() {
   });
 }
 
-async function getNotification() {
+function getNotification() {
     try {
         if ("Notification" in window) {
-            const permission = await new Promise(resolve => Notification.requestPermission(resolve));
+            const permission = new Promise(resolve => Notification.requestPermission(resolve));
             
             console.log("Notification permission status:", permission);
             handlePermission(permission);
