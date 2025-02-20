@@ -1,4 +1,4 @@
-checkbox = document.getElementById("toggle")
+// src/js/funcionario/functions.js
 
 // Function to set a local storage parameter
 function setLocalStorageParam(key, value) {
@@ -12,7 +12,7 @@ function getLocalStorageParam(key, defaultValue) {
 }
 
 // Function to check if the checkbox is checked
-function checkboxStatus() {
+function getCheckState() {
 	let checkState = checkbox.checked;
 	
 	if (checkState) {
