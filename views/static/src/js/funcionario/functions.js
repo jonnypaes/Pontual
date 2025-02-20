@@ -26,7 +26,7 @@ function checkboxStatus() {
 }
 
 function getCookies() {
-	checkState = getLocalStorageParam("toggle-state", DEFAULT_STATE);
+	checkState = getLocalStorageParam("toggle-state", isChecked);
 	checkbox.checked = checkState;
 }
 
