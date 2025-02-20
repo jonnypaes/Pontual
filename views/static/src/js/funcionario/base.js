@@ -6,6 +6,14 @@ const horaExtra = false;
 const escalaEspecial = false;
 const localExato = false;
 
+// DB
+const homeOffice = true;
+const entradaFlexivel = false;
+const almocoFlexivel = false;
+const horaExtra = false;
+const escalaEspecial = false;
+const localExato = false;
+
 function verification() {
   // VerifyLocal();
   // VerifyHours();
