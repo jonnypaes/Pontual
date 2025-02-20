@@ -1,3 +1,5 @@
+// src/js/funcionario/global.js
+
 var latitude;
 var longitude;
 var checkbox = document.getElementById('toggle');
