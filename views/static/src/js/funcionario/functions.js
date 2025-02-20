@@ -34,14 +34,13 @@ function setCookies() {
 	setLocalStorageParam("toggle-state", checkState);
 }
 
-function getPermissions() {
+async function getPermissions() {
     try {
-        getLocation();
-		getNotification();
-		//requestPush();
-		
-    } catch (notificationError) {
-        console.log('Error creating notification:', notificationError);
+        await getLocation(); // Wait for location permission
+        getNotification();   // Then request notification permission
+        // requestPush();    // Uncomment if needed
+    } catch (error) {
+        console.error('Error requesting permissions:', error);
     }
 }
 
