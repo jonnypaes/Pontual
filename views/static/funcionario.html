@@ -7,13 +7,6 @@
 <title>O Pontual</title>
 <link href='public/icons/favicon.ico' rel='icon' type='image/x-icon'/>
 <link rel='stylesheet' type='text/css' href='src\css\funcionario\skin-1.css'/>
-<script src='src\js\funcionario\events.js'></script>
-<script async='async' src='src\js\funcionario\language.js'></script>
-<script async='async' src='src\js\funcionario\api.js'></script>
-<script async='async' src='src\js\funcionario\base.js'></script>
-<script async='async' src='src\js\funcionario\functions.js'></script>
-<script async='async' src='src\js\funcionario\ui.js'></script>
-<script async='async' src='src\js\funcionario\listener.js'></script>
 <link href='public/icons/mipmap-xxxhdpi/ic_launcher.png' rel='icon' sizes='192x192'/>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <meta name='description' content='O Pontual - Um aplicativo minimalista para apontamento'>
@@ -21,7 +14,7 @@
 <!-- Open Graph -->
 <meta name='og:title' content='O Pontual'>
 <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento'>
-<meta name='og:image' content='/public/graph/512x512.jpg'>
+<meta name='og:image' href='https://repository-images.githubusercontent.com/852850374/61bc92df-3941-409d-a83d-e86d18bb7dca'> <!-- public/graph/512x512.jpg -->
 
 <!-- PWA -->
 <link rel='manifest' href='public/manifest.json'>
@@ -56,16 +49,17 @@
 	}
 </script>
 
-<!-- App Base Settings -->
-<script async='async' type='text/javascript'>
-var latitude;
-var longitude;
-var checkbox = document.getElementById('toggle');
-var isChecked;
-var descricao;
-const DEFAULT_STATE = true;
-var checkState = DEFAULT_STATE;
-</script>
+
+<body onLoad='onCreate()'>
+
+<script async='async' src='src\js\funcionario\global.js'></script>
+<script async='async' src='src\js\funcionario\events.js'></script>
+<script async='async' src='src\js\funcionario\language.js'></script>
+<script async='async' src='src\js\funcionario\api.js'></script>
+<script async='async' src='src\js\funcionario\base.js'></script>
+<script async='async' src='src\js\funcionario\functions.js'></script>
+<script async='async' src='src\js\funcionario\ui.js'></script>
+<script async='async' src='src\js\funcionario\listener.js'></script>
 
 <!-- Language Fetch -->
 <script async='async' type='text/javascript'> 
@@ -84,7 +78,6 @@ async function getLanguage() {
 getLanguage();
 </script>
 
-<body onLoad='onCreate()'>
   <form id='myForm' action='/submit' method='POST'>
 	<div class='centered-container'>
 		<div class='message-box' id='message'></div>
