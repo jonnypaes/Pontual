@@ -1,10 +1,5 @@
-// DB
-const homeOffice = true;
-const entradaFlexivel = false;
-const almocoFlexivel = false;
-const horaExtra = false;
-const escalaEspecial = false;
-const localExato = false;
+// Product backbone. Entirely related to the business rule
+// That's why it is temporarily written in Brazilian Portuguese 
 
 // DB
 const homeOffice = true;
@@ -14,7 +9,12 @@ const horaExtra = false;
 const escalaEspecial = false;
 const localExato = false;
 
-function verification() {
+// OnChange + OnListen
+const tolerancia = 10;
+const entrada = 8 * 60;
+const intervaloSaida = 13 * 60;
+const intervaloRetorno = 14 * 60;
+const saida = 18 * 60;function verification() {
   // VerifyLocal();
   // VerifyHours();
   verifyEvent();
