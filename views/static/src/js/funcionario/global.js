@@ -3,8 +3,8 @@ var longitude;
 var checkbox = document.getElementById('toggle');
 var isChecked;
 var descricao;
-const DEFAULT_STATE = true;
-var checkState = DEFAULT_STATE;
+
+checkbox.checked = isChecked;
 
 var now = new Date();
 var currentHour = now.getHours();
