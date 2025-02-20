@@ -91,6 +91,9 @@
       "purpose": "maskable"
     }
   ],
+  "permissions": [
+        "notifications"
+  ],	
   "categories": ["productivity"],
   "launch_handler": {
     "client_mode": "navigate-existing"
