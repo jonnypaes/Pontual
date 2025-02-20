@@ -1,18 +1,25 @@
+// src/js/funcionario/debug.js
+
 let lineAdjust = ' \n';
-let isDebugMode = true; // Ensure it's defined
+let isDebugMode = false; // Set to false to disable all logging
+let showErrorsOnly = true; // Set to true to show only errors
 
 // Override console.log
 const originalLog = console.log;
 console.log = function(...args) {
-    originalLog.apply(console, args);
-    alert('Console: ' + args.join(' '));
+    if (!showErrorsOnly && isDebugMode) {
+        originalLog.apply(console, args);
+        alert('Console: ' + args.join(' '));
+    }
 };
 
 // Override console.error
 const originalError = console.error;
 console.error = function(...args) {
-    originalError.apply(console, args);
-    alert('Error: ' + args.join(' '));
+    if (!showErrorsOnly || args.length > 0) { // Always show errors
+        originalError.apply(console, args);
+        alert('Error: ' + args.join(' '));
+    }
 };
 
 // Override console.debug
