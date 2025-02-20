@@ -1,7 +1,7 @@
 var latitude;
 var longitude;
 var checkbox = document.getElementById('toggle');
-var isChecked;
+// var isChecked;
 var descricao;
 
 checkbox.checked = isChecked;
@@ -14,7 +14,3 @@ var boolEntrada = false;
 var boolIntervalo = false;
 var boolIntervaloRetorno = false;
 var boolSaida = false;
-
-function getCheckState() {
-    return checkbox.checked;
-}
