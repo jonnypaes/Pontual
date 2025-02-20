@@ -34,6 +34,19 @@ function sendDataToServer() {
     };
 }
 
+function handlePermission(permission) {
+    switch (permission) {
+        case "granted":
+            showNotification('Notification Granted', 'Notifications are allowed');
+            break;
+        case "denied":
+            alert("The user denied permission for notifications.");
+            break;
+        default:
+            alert("Notification permission status: " + permission); //console.log("Notification status: " + permission);
+    }
+}
+
 async function getLocation() {
   return new Promise(async (resolve, reject) => {
     if (!latitude || !longitude) {
@@ -64,22 +77,22 @@ async function getLocation() {
   });
 }
 
-function getNotification() {
-    if (!("Notification" in window)) {
-        console.log("Notifications API is not supported in this browser.");
-        return;
-    }
-
-    if (Notification.permission === "default") {
-        Notification.requestPermission()
-            .then((permission) => {
+async function getNotification() {
+    try {
+        if ("Notification" in window) {
+            if (Notification.permission === "default") {
+                const permission = await Notification.requestPermission();
                 console.log("Notification permission status:", permission);
-            })
-            .catch((error) => {
-                console.error("Error requesting notification permission:", error);
-            });
-    } else {
-        console.log("Notification permission already:", Notification.permission);
+                handlePermission(permission);
+            } else {
+                console.log("Notification permission already:", Notification.permission);
+                handlePermission(Notification.permission);  // Handle permission status if it's already granted/denied
+            }
+        } else {
+            alert("Notification permission may be deactivated.");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
 }
 
