@@ -1,7 +1,7 @@
 // src/js/funcionario/debug.js
 
 let lineAdjust = ' \n';
-let showErrorsOnly = false; // Set to true to show only errors
+let showErrorsOnly = isVerbose; // Set to true to show only errors
 
 // Override console.log
 const originalLog = console.log;
