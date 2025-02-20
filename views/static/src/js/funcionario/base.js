@@ -14,7 +14,9 @@ const tolerancia = 10;
 const entrada = 8 * 60;
 const intervaloSaida = 13 * 60;
 const intervaloRetorno = 14 * 60;
-const saida = 18 * 60;function verification() {
+const saida = 18 * 60;
+
+function verification() {
   // VerifyLocal();
   // VerifyHours();
   verifyEvent();
