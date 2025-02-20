@@ -4,7 +4,8 @@ function getUrlParameters(parameter, staticURL, decode) {
   // Attempt to get the substring after '?' and safely split it into 'key=value' parts
   var parArr = currLocation.split("?")[1]?.split("&");
   if (!parArr) {
-    return null; // Return null if there are no parameters at all
+    // Return an object with all parameters set to false
+    return { [parameter]: false };
   }
 
   // Iterate over each 'key=value' pair
@@ -24,8 +25,8 @@ function getUrlParameters(parameter, staticURL, decode) {
     }
   }
 
-  // Return null if the parameter is not found
-  return null;
+  // Return false if the parameter is not found
+  return { [parameter]: false };
 }
 
 const isDebugMode = getUrlParameters('debug', '', false);
