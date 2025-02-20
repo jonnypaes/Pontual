@@ -1,3 +1,5 @@
+// src/js/funcionario/listener.js
+
 // Base
 const notificationTimes = [
 	{ event: 1, hour: 7, minute: 55, content: "Olá! Não esqueça de fazer o apontamento da entrada" },
@@ -28,10 +30,10 @@ const warningTimes = [
 	{ event: 4, hour: 18, minute: 2, content: language.msgAfterEnd },
 ];
 */
-var now = new Date();
-var currentHour = now.getHours();
-var currentMinute = now.getMinutes();
+
 var messageDisplayed = {};
+
+let lastCheckedMinute = null;
 
 function listenerEvent() {
     now = new Date();
@@ -42,14 +44,17 @@ function listenerEvent() {
         let { hour, minute, content } = entry;
         let key = `${hour}:${minute}`;
 
+        // Only show notification if it's the correct time and not displayed yet
         if (currentHour === hour && currentMinute === minute && !messageDisplayed[key]) {
             showNotification(content);
             messageDisplayed[key] = true;
         }
-        
-        let timeRemaining = 60 - now.getSeconds();
+    }
 
-        if (timeRemaining <= 5) {
+    // Reset messageDisplayed every time a new minute starts
+    if (lastCheckedMinute !== currentMinute) {
+        lastCheckedMinute = currentMinute;
+        for (let key in messageDisplayed) {
             messageDisplayed[key] = false;
         }
     }
