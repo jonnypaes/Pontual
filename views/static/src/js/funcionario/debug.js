@@ -1,7 +1,7 @@
 // src/js/funcionario/debug.js
 
 let lineAdjust = ' \n';
-let isDebugMode = false; // Set to false to disable all logging
+let isDebugMode = true; // Set to false to disable all logging
 let showErrorsOnly = true; // Set to true to show only errors
 
 // Override console.log
