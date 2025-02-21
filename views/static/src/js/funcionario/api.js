@@ -35,7 +35,7 @@ async function getNotification() {
         try {
             if ("Notification" in window) {
                 const permission = await Notification.requestPermission();
-                console.log("Notification permission status:", permission);
+                console.debug("Notification permission status:", permission);
                 handlePermission(permission);
                 resolve(permission);
             } else {
