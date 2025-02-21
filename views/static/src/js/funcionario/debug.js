@@ -14,10 +14,19 @@ console.log = function(...args) {
     }
 };
 
+// Override console.debug
+const originalDebug = console.debug;
+console.debug = function(...args) {
+    if (isDebugMode) {
+        originalDebug.apply(console, args); 
+        alert('Error: ' + args.join(' '));
+    }
+};
+
 // Override console.error
 const originalError = console.error;
 console.error = function(...args) {
-    if (isDebugMode) { // Only log if isDebugMode is true
+    if (isDebugMode) {
         originalError.apply(console, args);
         if (!showErrorsOnly || args.length > 0) { // Always show errors
             alert('Error: ' + args.join(' '));
