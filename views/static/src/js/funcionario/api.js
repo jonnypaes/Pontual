@@ -1,33 +1,33 @@
 // src/js/funcionario/api.js
 
 async function getLocation() {
-  return new Promise(async (resolve, reject) => {
-    if (!latitude || !longitude) {
-      try {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            function (position) {
-              latitude = position.coords.latitude;
-              longitude = position.coords.longitude;
-              document.getElementById("latitude").value = latitude;
-              document.getElementById("longitude").value = longitude;
-              resolve({ latitude, longitude });
-            },
-            function (error) {
-              reject(error);
-            },
-            { enableHighAccuracy: false }
-          );
+    return new Promise(async (resolve, reject) => {
+        if (!latitude || !longitude) {
+            try {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        function (position) {
+                            latitude = position.coords.latitude;
+                            longitude = position.coords.longitude;
+                            document.getElementById("latitude").value = latitude;
+                            document.getElementById("longitude").value = longitude;
+                            resolve({ latitude, longitude });
+                        },
+                        function (error) {
+                            reject(new Error("Location permission denied."));
+                        },
+                        { enableHighAccuracy: false }
+                    );
+                } else {
+                    reject(new Error("Geolocation is not supported by this browser."));
+                }
+            } catch (error) {
+                reject(error);
+            }
         } else {
-          throw new Error("Geolocation is not supported by this browser.");
+            resolve({ latitude, longitude });
         }
-      } catch (error) {
-        reject(error);
-      }
-    } else {
-      resolve({ latitude, longitude });
-    }
-  });
+    });
 }
 
 async function getNotification() {
@@ -35,11 +35,14 @@ async function getNotification() {
         try {
             if ("Notification" in window) {
                 const permission = await Notification.requestPermission();
-                console.debug("Notification permission status:", permission);
-                handlePermission(permission);
-                resolve(permission);
+                console.log("Notification permission status:", permission);
+                if (permission === 'granted') {
+                    resolve(permission);
+                } else {
+                    reject(new Error("Notification permission denied."));
+                }
             } else {
-                reject(new Error("Notification permission may be deactivated."));
+                reject(new Error("Notifications are not supported by this browser."));
             }
         } catch (error) {
             reject(error);
