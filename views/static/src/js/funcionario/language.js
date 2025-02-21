@@ -1,8 +1,13 @@
 function ReceiveString(i18n) {
   const language = {
     AppName: i18n.APP_NAME,
-    warningBefore: i18n.GENERAL.WARNING_BEFORE,
-    warningAfter: i18n.GENERAL.WARNING_AFTER,
+    locale: i18n.LOCALE,
+    enUsButton: i18n.GENERAL.EN_US_BUTTON,
+    ptBrButton: i18n.GENERAL.PT_BR_BUTTON,
+    ruRuButton: i18n.GENERAL.RU_RU_BUTTON,
+    esEsButton: i18n.GENERAL.ES_ES_BUTTON,
+    dlgTermsService: i18n.GENERAL.TERMS_SERVICE,
+    dlgWelcome: i18n.GENERAL.WELCOME,   
     acceptButton: i18n.GENERAL.ACCEPT,
     declineButton: i18n.GENERAL.DECLINE,
     msgWorkStart: i18n.GENERAL.WORK_START,
@@ -19,12 +24,8 @@ function ReceiveString(i18n) {
     msgAfterEnd: i18n.GENERAL.AFTER_END,
     msgAbnormalOn: i18n.GENERAL.ABNORMAL_ON,
     msgAbnormalOff: i18n.GENERAL.ABNORMAL_OFF,
-    msgTermsService: i18n.GENERAL.TERMS_SERVICE,
-    enUsButton: i18n.GENERAL.EN_US_BUTTON,
-    ptBrButton: i18n.GENERAL.PT_BR_BUTTON,
-    ruRuButton: i18n.GENERAL.RU_RU_BUTTON,
-    esEsButton: i18n.GENERAL.ES_ES_BUTTON,
-    locale: i18n.LOCALE
+    warningBefore: i18n.GENERAL.WARNING_BEFORE,
+    warningAfter: i18n.GENERAL.WARNING_AFTER
   };
 
   return language;
