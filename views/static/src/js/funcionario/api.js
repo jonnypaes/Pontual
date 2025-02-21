@@ -1,39 +1,5 @@
 // src/js/funcionario/api.js
 
-function sendDataToServer() {
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/funcionario", true);
-	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    var isChecked = checkbox.checked;
-	var inputElement = document.getElementById('box').value;
-	getLocation()
-	var data = {
-		"latitude": latitude,
-		"longitude": longitude,
-		"isChecked": isChecked,
-		"descricao": inputElement,
-		"user-agent" : navigator.userAgent
-	};
-
-    try {
-        xhr.send(JSON.stringify(data));
-    } catch (error) {
-        console.error("Error sending the request:", error);
-    }
-	
-    xhr.onload = async function () {
-        try {
-            if (xhr.status === 200) {
-                console.log("200 - OK");
-            } else {
-                console.error("Code:" + xhr.status);
-            }
-        } catch (error) {
-            console.error("Error in xhr.onload:", error);
-        }
-    };
-}
-
 async function getLocation() {
   return new Promise(async (resolve, reject) => {
     if (!latitude || !longitude) {
@@ -64,19 +30,21 @@ async function getLocation() {
   });
 }
 
-function getNotification() {
-    try {
-        if ("Notification" in window) {
-            const permission = new Promise(resolve => Notification.requestPermission(resolve));
-            
-            console.log("Notification permission status:", permission);
-            handlePermission(permission);
-        } else {
-            alert("Notification permission may be deactivated.");
+async function getNotification() {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if ("Notification" in window) {
+                const permission = await Notification.requestPermission();
+                console.log("Notification permission status:", permission);
+                handlePermission(permission);
+                resolve(permission);
+            } else {
+                reject(new Error("Notification permission may be deactivated."));
+            }
+        } catch (error) {
+            reject(error);
         }
-    } catch (error) {
-        console.error("An error occurred:", error);
-    }
+    });
 }
 
 function showNotification(notificationText) {
@@ -132,4 +100,38 @@ function handleNotificationError(error, notificationText) {
     } else {
         console.error("Error creating notification:", error);
     }
+}
+
+function sendDataToServer() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/funcionario", true);
+	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    var isChecked = checkbox.checked;
+	var inputElement = document.getElementById('box').value;
+	getLocation()
+	var data = {
+		"latitude": latitude,
+		"longitude": longitude,
+		"isChecked": isChecked,
+		"descricao": inputElement,
+		"user-agent" : navigator.userAgent
+	};
+
+    try {
+        xhr.send(JSON.stringify(data));
+    } catch (error) {
+        console.error("Error sending the request:", error);
+    }
+	
+    xhr.onload = async function () {
+        try {
+            if (xhr.status === 200) {
+                console.log("200 - OK");
+            } else {
+                console.error("Code:" + xhr.status);
+            }
+        } catch (error) {
+            console.error("Error in xhr.onload:", error);
+        }
+    };
 }
