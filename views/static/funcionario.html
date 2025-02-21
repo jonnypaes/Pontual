@@ -24,6 +24,8 @@
   <script async='async' src='src\js\funcionario\debug.js'></script>
   <script async='async' src='src\js\funcionario\data.js'></script>
   <script async='async' src='src\js\funcionario\listener.js'></script>
+  <script async='async' src='src\js\funcionario\language.js'></script>
+
   <script>
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('service-worker.js').then(function(registration) {
@@ -57,12 +59,11 @@
 
 <script async='async' src='src\js\funcionario\global.js'></script>
 <script async='async' src='src\js\funcionario\events.js'></script>
-<script async='async' src='src\js\funcionario\language.js'></script>
 <script async='async' src='src\js\funcionario\base.js'></script>
 <script async='async' src='src\js\funcionario\functions.js'></script>
-<script async='async' src='src\js\funcionario\ui.js'></script>
-	
+
 <script src='src\js\funcionario\api.js' defer></script>
+<script src='src\js\funcionario\ui.js' defer></script>
 	
 <!-- Language Fetch -->
 <script type='text/javascript'> 
@@ -72,7 +73,7 @@ async function getLanguage() {
     const response = await fetch('public/language/pt-br.json');
     const i18n = await response.json();
     language = ReceiveString(i18n);
-	showNotification('Bem-vindo'); // showNotification(language.AppName);
+    showNotification('Bem-vindo'); // showNotification(language.AppName);
 	
   } catch (error) {
     console.error('Error: ', error);
