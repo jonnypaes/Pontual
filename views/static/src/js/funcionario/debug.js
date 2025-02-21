@@ -6,7 +6,7 @@ let showErrorsOnly = false; // isVerbose; // Set to true to show only errors
 // Override console.log
 const originalLog = console.log;
 console.log = function(...args) {
-    if (isDebugMode) return; // Only log if isDebugMode is true
+    if (isDebugMode) {; // Only log if isDebugMode is true
         originalLog.apply(console, args);
         if (!showErrorsOnly) {
             alert('Console: ' + args.join(' '));
