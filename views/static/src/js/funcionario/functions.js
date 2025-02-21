@@ -36,8 +36,11 @@ function setCookies() {
 
 async function getPermissions() {
     try {
-        await getLocation();      // Wait for location permission
-        await getNotification();  // Then request notification permission
+        const locationPermission = await getLocation(); 
+        console.log('Location permission granted:', locationPermission);
+        
+        const notificationPermission = await getNotification(); 
+        console.log('Notification permission granted:', notificationPermission);
         // await requestPush();  // Uncomment if needed
     } catch (error) {
         console.error('Error requesting permissions:', error);
