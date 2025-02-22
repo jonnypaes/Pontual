@@ -2,7 +2,7 @@
 
 **Composição técnica:**
 - Back-end: Python (Flask Framework)
-- Front-end: HTML / CSS / JS/ES
+- Front-end: HTML 5, CSS 3 & JS/ES 14
 - Banco de dados: MySQL
 - Padrão arquitetural: MVC (Model, View, Controller)
 - Metodologia de desenvolvimento: Agile Hybrid
