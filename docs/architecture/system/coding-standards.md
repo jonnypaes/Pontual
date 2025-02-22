@@ -1,10 +1,9 @@
 ## Estrutura
 
 **Composição técnica:**
-- Linguagem: Python
+- Back-end: Python (Flask Framework)
+- Front-end: HTML / CSS / JS/ES
 - Banco de dados: MySQL
-- Framework Backend: Flask
-- Front-end: HTML, CSS, JS/ES
 - Padrão arquitetural: MVC (Model, View, Controller)
 - Metodologia de desenvolvimento: Agile Hybrid
 - Paradigmas de Programação: Funcional, Estruturado (Imperativo)
