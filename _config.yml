@@ -1,5 +1,5 @@
 title: Pontual
-description: O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferece uma ampla gama de dados para registro de apontamento em sua empresa.
+description: O Pontual: Um aplicativo minimalista para apontamento
 
 permalink: pretty
 
@@ -9,7 +9,9 @@ image:
   path: /views/static/public/graph/1280x720.jpg
   width: 1280
   height: 720
-  alt: O Pontual
+  alt: Wallpaper
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
+  
