@@ -57,7 +57,7 @@
 Para verificar as diretrizes de estilo de código Python (PEP8), acesse [PEP8](https://peps.python.org/pep-0008/).
 
 
-## Classificação de Conteúdo
+## Classificação
 
 América do Norte e do Sul: E (TODOS)
 
