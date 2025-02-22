@@ -14,7 +14,7 @@
   <!-- Open Graph -->
   <meta name='og:title' content='O Pontual'>
   <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento'>
-  <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- public/graph/512x512.jpg -->
+  <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- OpenGraph tags cannot be relative -->
 
   <!-- PWA -->
   <link rel='manifest' href='public/manifest.json'>
@@ -23,8 +23,8 @@
 
   <script async='async' src='src\js\funcionario\debug.js'></script>
   <script async='async' src='src\js\funcionario\data.js'></script>
+  <script async='async' src='src\js\funcionario\language.js'></script>	
   <script async='async' src='src\js\funcionario\listener.js'></script>
-  <script async='async' src='src\js\funcionario\language.js'></script>
 
   <script>
 	if ('serviceWorker' in navigator) {
@@ -55,7 +55,7 @@
 
 </head>
 	
-<body onLoad='onCreate()'>
+<body>
 
 <script async='async' src='src\js\funcionario\global.js'></script>
 <script async='async' src='src\js\funcionario\events.js'></script>
