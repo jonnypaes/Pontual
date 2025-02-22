@@ -8,10 +8,11 @@
 - Padrão arquitetural: MVC (Model, View, Controller)
 - Metodologia de desenvolvimento: Agile Hybrid
 - Paradigmas de Programação: Funcional, Estruturado (Imperativo)
+- Caminho (URL): Relativo
 - Idioma funcional: Português (Brasil)
 - Idioma estrutural: Inglês 
 - Idiomas disponíveis: ptBR, enUS, esES, ruRU
-- Caminho: Relativo
+- Design Language: Neumorphism / Material Design
 
 ## Sintaxes
 
