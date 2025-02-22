@@ -1,14 +1,14 @@
-# Banco de dados
+## Banco de dados
 
-## Visão Geral
-Este documento descreve a estrutura e operações do banco de dados.
+### Visão Geral
+Este documento descreve a estrutura e operações do banco de dados **MySQL**.
 
-## Squema
+### Squema
 Diagrama referente ao [Banco de dados](../../../db.sql)
 
 ![MySQL](eer-diagram.svg)
 
-## SQL
+### SQL (Base)
 
 - [Data Definition Language (DDL)](#data-definition-language-ddl)
   - [Create](#create)
@@ -22,9 +22,9 @@ Diagrama referente ao [Banco de dados](../../../db.sql)
 - [Data Query Language (DQL)](#data-query-language-dql)
   - [Select](#select)
 
-### Data Definition Language (DDL)
+#### Data Definition Language (DDL)
 
-#### Create
+##### Create
 
 ```
 CREATE USER 'root'@'127.0.0.1' IDENTIFIED BY 'root-password';  
@@ -93,7 +93,7 @@ CREATE TABLE APONTAMENTOS (
 );
 ```
 
-#### Alter
+##### Alter
 ```
 ALTER TABLE FUNCIONARIOS  
 ADD CONSTRAINT fk_funcionarios_id_empresas   
@@ -111,7 +111,7 @@ FOREIGN KEY (ID_FUNCIONARIO)
 REFERENCES FUNCIONARIOS (ID);
 ```
 
-#### Trigger
+##### Trigger
 ```
 DELIMITER //  
 CREATE TRIGGER TRG_APONTAMENTOS_CONTADOR  
@@ -129,14 +129,14 @@ END;
 DELIMITER ;
 ```
 
-#### Index
+##### Index
 
 ```
 CREATE UNIQUE INDEX IDX_APONTAMENTOS ON APONTAMENTOS (ID_EMPRESA, ID_FUNCIONARIO, CONTADOR);
 ```
 
-### Data Control Language (DCL)
-#### Grant
+#### Data Control Language (DCL)
+##### Grant
 
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'PONTUAL_ADMIN'@'localhost' WITH GRANT OPTION;  
@@ -154,8 +154,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON PONTUAL.APONTAMENTOS TO 'PONTUAL_ADMIN'@
 FLUSH PRIVILEGES;
 ```
 
-### Data Manipulation Language (DML)
-#### Insert
+#### Data Manipulation Language (DML)
+##### Insert
 ```
 INSERT INTO EMPRESAS (LOGIN, SENHA, NOME, CNPJ_CPF, CEP, NUMERO, COMPLEMENTO, ATIVO)  
 VALUES  
@@ -163,8 +163,8 @@ VALUES
     ('admin@real.com', 'qwerty123', 'Empresa - Real', '98765432101', '54321', 2, 'Other', TRUE);
 ```
 
-### Data Query Language (DQL)
-#### Select
+#### Data Query Language (DQL)
+##### Select
 
 ```
 SELECT  
@@ -186,3 +186,5 @@ JOIN
     EVENTOS E ON A.ID_EVENTO = E.ID;
 ```
 
+### SQL (Query)
+Arquivo contendo as [queries de interação](../../../models/queries.py)
