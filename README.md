@@ -1,7 +1,5 @@
 # PONTUAL
 
-O Pontual é um aplicativo em Flask / Python & HTML5.
-
 O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferece uma ampla gama de dados para registro de apontamento em sua empresa.
 
 ## Índice
@@ -31,8 +29,8 @@ Para mais informações sobre componentes usados no projeto, leia [Componentes d
 
 ## Interface
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-<figure> <img width="300" height="475" src="docs/architecture/screenshots/checkbox.off.png"> </figure>
-<figure> <img width="300" height="475" src="docs/architecture/screenshots/checkbox.on.png"> </figure>
+<figure> <img width="300" height="475" src="views/static/public/graph/screenshots/checkbox-off.png"> </figure>
+<figure> <img width="300" height="475" src="views/static/public/graph/screenshots/checkbox-on.png"> </figure>
 </div>
 
 Caso queira ter uma prévia do front-end clique [aqui](views/static/funcionario.html)
