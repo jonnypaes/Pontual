@@ -1,6 +1,6 @@
 ## Banco de dados
 
-### Visão Geral
+### Descrição
 Este documento descreve a estrutura e operações do banco de dados **MySQL**.
 
 ### Squema
