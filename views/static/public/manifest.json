@@ -21,20 +21,20 @@
       "type": "image/jpg",
       "form_factor": "wide",
       "label": "Wallpaper"
-    },
-    {
-      "src": "graph/screenshots/checkbox-on.png",
-	  "sizes": "615x974",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "O Pontual - Ligado"
-    },		
+    },	
     {
       "src": "graph/screenshots/checkbox-off.png",
 	  "sizes": "615x974",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "O Pontual - Desligado"
+    },    
+    {
+      "src": "graph/screenshots/checkbox-on.png",
+	  "sizes": "615x974",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "O Pontual - Ligado"
     }
   ],
   "features": [
