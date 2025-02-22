@@ -30,9 +30,9 @@ Para mais informações tecnicas, verifique a [Documentação](docs/index.md)
 Para mais informações sobre componentes usados no projeto, leia [Componentes de Terceiros](THIRD-PARTY.md)
 
 ## Interface
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;"> 
-<figure> <img width="300" height="475" src="docs/architecture/screenshots/checkbox.on.png"> </figure>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
 <figure> <img width="300" height="475" src="docs/architecture/screenshots/checkbox.off.png"> </figure>
+<figure> <img width="300" height="475" src="docs/architecture/screenshots/checkbox.on.png"> </figure>
 </div>
 
 Caso queira ter uma prévia do front-end clique [aqui](views/static/funcionario.html)
