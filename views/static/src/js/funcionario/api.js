@@ -1,33 +1,49 @@
 // src/js/funcionario/api.js
 
-async function getLocation() {
-    return new Promise(async (resolve, reject) => {
-        if (!latitude || !longitude) {
-            try {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        function (position) {
-                            latitude = position.coords.latitude;
-                            longitude = position.coords.longitude;
-                            document.getElementById("latitude").value = latitude;
-                            document.getElementById("longitude").value = longitude;
-                            resolve({ latitude, longitude });
-                        },
-                        function (error) {
-                            reject(new Error("Location permission denied."));
-                        },
-                        { enableHighAccuracy: false }
-                    );
-                } else {
-                    reject(new Error("Geolocation is not supported by this browser."));
-                }
-            } catch (error) {
-                reject(error);
-            }
+function getLocation() {
+  return new Promise((resolve, reject) => {
+    // Check if the browser supports geolocation
+    if (!navigator.geolocation) {
+      return reject(new Error("Geolocation is not supported by this browser."));
+    }
+
+    // Return cached coordinates if already available
+    if (getLocation.cachedCoordinates) {
+      return resolve(getLocation.cachedCoordinates);
+    }
+
+    // Define options for the geolocation request
+    const options = {
+      enableHighAccuracy: false,
+      timeout: 10000, // 10-second timeout
+      maximumAge: 0
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        // Cache the coordinates for future calls
+        getLocation.cachedCoordinates = { latitude, longitude };
+
+        // Update UI elements if they exist
+        const latElem = document.getElementById("latitude");
+        const lonElem = document.getElementById("longitude");
+        if (latElem) latElem.value = latitude;
+        if (lonElem) lonElem.value = longitude;
+
+        resolve({ latitude, longitude });
+      },
+      (error) => {
+        // Provide a clearer error message for permission denial
+        if (error.code === error.PERMISSION_DENIED) {
+          reject(new Error("Location permission denied."));
         } else {
-            resolve({ latitude, longitude });
+          reject(error);
         }
-    });
+      },
+      options
+    );
+  });
 }
 
 async function getNotification() {
@@ -105,36 +121,49 @@ function handleNotificationError(error, notificationText) {
     }
 }
 
-function sendDataToServer() {
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/funcionario", true);
-	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    var isChecked = checkbox.checked;
-	var inputElement = document.getElementById('box').value;
-	getLocation()
-	var data = {
-		"latitude": latitude,
-		"longitude": longitude,
-		"isChecked": isChecked,
-		"userInput": inputElement,
-		"userAgent" : navigator.userAgent
-	};
+async function sendDataToServer() {
+    const checkbox = document.getElementById('checkbox');
+    if (!checkbox) {
+        console.error('Checkbox element not found');
+        return;
+    }
+    const isChecked = checkbox.checked;
+    const inputElement = document.getElementById('box').value;
 
     try {
-        xhr.send(JSON.stringify(data));
+        // await getLocation(); // Make sure this function populates `latitude` and `longitude`
+    } catch (error) {
+        console.error("Error getting location:", error);
+        // Handle location error (e.g., set default values)
+        latitude = null;
+        longitude = null;
+    }
+
+    const data = {
+        latitude: latitude,
+        longitude: longitude,
+        isChecked: isChecked,
+        userInput: inputElement,
+        userAgent: navigator.userAgent
+    };
+
+    try {
+        const response = await fetch("/funcionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            console.log("Data sent successfully to the server.");
+        } else {
+            throw new Error("Failed to send data to the server.");
+        }
     } catch (error) {
         console.error("Error sending the request:", error);
+        // If sending fails, save to IndexedDB
+        saveDataToIndexedDB(data);
     }
-	
-    xhr.onload = async function () {
-        try {
-            if (xhr.status === 200) {
-                console.log("200 - OK");
-            } else {
-                console.error("Code:" + xhr.status);
-            }
-        } catch (error) {
-            console.error("Error in xhr.onload:", error);
-        }
-    };
 }
