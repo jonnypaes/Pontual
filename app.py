@@ -30,11 +30,10 @@ def showFuncionario():
             toggle_status = data.get('toggle')
             id_empresa = 1
             id_funcionario = 1
-            id_evento = 0
             latitude = data.get('latitude')
             longitude = data.get('longitude')
-            user_agent = data.get('user-agent')
-            descricao = data.get('descricao')
+            user_agent = data.get('userAgent')
+            descricao = data.get('textBox')
             
             con = mysql.connect()
             cur = con.cursor()
