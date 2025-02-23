@@ -1,4 +1,4 @@
-## Terms of Use for the App "The Punctual" (O Pontual)
+## Terms of Use
 
 ### Usage and Metrics
 
