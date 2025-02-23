@@ -13,8 +13,8 @@
 
   <!-- Open Graph -->
   <meta name='og:title' content='O Pontual' />
-  <meta property="og:url" content="/" /> <!-- Relativeness forbidden -->
-  <meta property="og:type" content="website" />
+  <meta property='og:url' content='/' /> <!-- Relativeness forbidden -->
+  <meta property='og:type' content='website' />
   <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento' />
   <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- Relativeness forbidden -->
 
@@ -24,7 +24,7 @@
   <meta content='yes' name='apple-mobile-web-app-capable' />
 
   <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
+  <script type='application/ld+json'>
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -72,28 +72,28 @@
 	
 <body>
 
-<script async='async' src='src\js\funcionario\global.js'></script>
-<script async='async' src='src\js\funcionario\events.js'></script>
-<script async='async' src='src\js\funcionario\base.js'></script>
-<script async='async' src='src\js\funcionario\functions.js'></script>
+  <script async='async' src='src\js\funcionario\global.js'></script>
+  <script async='async' src='src\js\funcionario\events.js'></script>
+  <script async='async' src='src\js\funcionario\base.js'></script>
+  <script async='async' src='src\js\funcionario\functions.js'></script>
 
-<script src='src\js\funcionario\api.js' defer></script>
-<script src='src\js\funcionario\ui.js' defer></script>
-	
+  <script src='src\js\funcionario\api.js' defer></script>
+  <script src='src\js\funcionario\ui.js' defer></script>
+		
 <!-- Language Fetch -->
 <script type='text/javascript'> 
-var language;
-async function getLanguage() {
-  try {
-    const response = await fetch('public/language/pt-br.json');
-    const i18n = await response.json();
-    language = ReceiveString(i18n);
-    showNotification('Bem-vindo'); // showNotification(language.AppName);
+  var language;
+  async function getLanguage() {
+    try {
+      const response = await fetch('public/language/pt-br.json');
+      const i18n = await response.json();
+      language = ReceiveString(i18n);
+      showNotification('Bem-vindo'); // showNotification(language.AppName);
 	
-  } catch (error) {
-    console.error('Error: ', error);
+    } catch (error) {
+      console.error('Error: ', error);
+    }
   }
-}
 </script>
 
   <form id='myForm' action='/submit' method='POST'>
@@ -117,10 +117,10 @@ async function getLanguage() {
 			
 		</div>
 		
-	<input type='hidden' id='textBox' name='textBox'>  
-	<input type='hidden' id='latitude' name='latitude'>
-    <input type='hidden' id='longitude' name='longitude'>  
-	<input type='submit' id='hiddenSubmit' style='display:none'>
+      <input type='hidden' id='textBox' name='textBox'>  
+      <input type='hidden' id='latitude' name='latitude'>
+      <input type='hidden' id='longitude' name='longitude'>  
+      <input type='submit' id='hiddenSubmit' style='display:none'>
   </form>
 </body>
 </html>
