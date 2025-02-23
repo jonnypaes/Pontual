@@ -1,4 +1,4 @@
-# PONTUAL
+# O PONTUAL
 
 O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferece uma ampla gama de dados para registro de apontamento em sua empresa.
 
@@ -60,4 +60,4 @@ Para mais informações, leia o arquivo de [licença](LICENSE)
 
 ## Links
 
-[O Pontual](https://opontual.app) | [GitHub](https://github.com/JonnyPaes/Pontual) | [GitHub Sites](https://JonnyPaes.github.io/Pontual)
+[OPontual.app](https://opontual.app) | [GitHub](https://github.com/JonnyPaes/Pontual) | [GitHub Sites](https://JonnyPaes.github.io/Pontual)
