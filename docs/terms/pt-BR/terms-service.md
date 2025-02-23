@@ -1,4 +1,4 @@
-## Termos de Uso do Aplicativo "O Pontual"
+## Termos de Uso
 
 ### Uso e Métricas
 
