@@ -6,6 +6,8 @@ O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferec
 
 > O Pontual - Um aplicativo minimalista para apontamento
 
+___
+
 ## Índice
 
 - [Requisitos](#requisitos)
