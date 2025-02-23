@@ -3,7 +3,7 @@
 var latitude;
 var longitude;
 var userInput;
-var checkbox = document.getElementById('toggle');
+var checkbox = document.getElementById('checkbox');
 // var isChecked;
 
 checkbox.checked = isChecked;
