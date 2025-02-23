@@ -30,7 +30,7 @@ ___
 - MySQL:5.7
 - HTML:5, CSS:3, JS/ES:2021
 
-Para mais informações tecnicas, verifique a [Documentação](docs/index.md)
+Para mais informações técnicas, verifique a [Documentação](docs/index.md)
 
 Para mais informações sobre componentes usados no projeto, leia [Componentes de Terceiros](THIRD-PARTY.md)
 
