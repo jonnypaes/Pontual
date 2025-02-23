@@ -12,10 +12,8 @@ function getLocalStorageParam(key, defaultValue) {
 }
 
 // Function to check if the checkbox is checked
-function getCheckState() {
-	let checkState = checkbox.checked;
-	
-	if (checkState) {
+function getCheckState() {	
+	if (checkbox.checked) {
 		document.body.classList.remove("false");
 		document.body.classList.add("true");
 	} else {
@@ -26,19 +24,18 @@ function getCheckState() {
 }
 
 function getCookies() {
-	checkState = getLocalStorageParam("toggle-state", isChecked);
-	checkbox.checked = checkState;
+	checkState = getLocalStorageParam("state", checkbox.checked);
 }
 
 function setCookies() {
-	setLocalStorageParam("toggle-state", checkState);
+	setLocalStorageParam("state", checkbox.checked);
 }
 
 async function getPermissions() {
     try {
         await getLocation(); 
         await getNotification(); 
-        // await requestPush();  // Uncomment if needed
+        // await requestPush(); 
     } catch (error) {
         console.error('Error requesting permissions:', error);
     }
