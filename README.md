@@ -23,7 +23,8 @@ ___
 - Docker Compose
 
 ## Composição
-**Pontual:3.0a**
+**Pontual:3.0α** (Alpha)
+
 - Python:3.8
 - Flask:2.0.3
 - MySQL:5.7
