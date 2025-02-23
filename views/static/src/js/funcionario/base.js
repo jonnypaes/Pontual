@@ -16,6 +16,11 @@ const intervaloSaida = 13 * 60;
 const intervaloRetorno = 14 * 60;
 const saida = 18 * 60;
 
+var boolEntrada = false;
+var boolIntervalo = false;
+var boolIntervaloRetorno = false;
+var boolSaida = false;
+
 function verification() {
   // VerifyLocal();
   // VerifyHours();
