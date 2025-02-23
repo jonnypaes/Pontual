@@ -122,7 +122,6 @@ function handleNotificationError(error, notificationText) {
 }
 
 async function sendDataToServer() {
-    const checkbox = document.getElementById('checkbox');
     const inputElement = document.getElementById('box').value;
   
     if (!checkbox) {
