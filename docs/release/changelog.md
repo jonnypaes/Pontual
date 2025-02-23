@@ -3,7 +3,8 @@
 ### 3.0a
 
 - [x]  Trocar localização real para localização aproximada
-- [x]  Favicon quadrado de proporções com 16, 32, 64, 128 e 256 para incremento de compatibilidade 
+- [x]  Favicon quadrado de proporções com 16, 32, 64, 128 e 256 para incremento de compatibilidade
+- [x] PNGs 48x48, 72x72, 96x96, 128x128, 192x192, 512x512 para Manifest.json
 - [x]  Tags de Opengraph, robot crawlers e SEO adicionadas
 - [x]  Aprimoramentos no service-worker para ler push do listener
 - [x]  Aprimoramentos no manifest.json (PWA)
