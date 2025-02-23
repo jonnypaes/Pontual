@@ -6,7 +6,7 @@ Este documento descreve a estrutura e operações do banco de dados **MySQL**.
 ### Squema
 Diagrama referente ao [Banco de dados](../../../db.sql)
 
-![MySQL](eer-diagram.svg)
+![EER Diagram - MySQL Workbench](eer-diagram.svg)
 
 ### SQL (Base)
 
