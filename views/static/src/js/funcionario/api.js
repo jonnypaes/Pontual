@@ -116,8 +116,8 @@ function sendDataToServer() {
 		"latitude": latitude,
 		"longitude": longitude,
 		"isChecked": isChecked,
-		"descricao": inputElement,
-		"user-agent" : navigator.userAgent
+		"userInput": inputElement,
+		"userAgent" : navigator.userAgent
 	};
 
     try {
