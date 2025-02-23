@@ -123,12 +123,12 @@ function handleNotificationError(error, notificationText) {
 
 async function sendDataToServer() {
     const checkbox = document.getElementById('checkbox');
+    const inputElement = document.getElementById('box').value;
+  
     if (!checkbox) {
         console.error('Checkbox element not found');
         return;
     }
-    const isChecked = checkbox.checked;
-    const inputElement = document.getElementById('box').value;
 
     try {
         // await getLocation(); // Make sure this function populates `latitude` and `longitude`
@@ -142,7 +142,7 @@ async function sendDataToServer() {
     const data = {
         latitude: latitude,
         longitude: longitude,
-        isChecked: isChecked,
+        isChecked: checkbox.checked,
         userInput: inputElement,
         userAgent: navigator.userAgent
     };
