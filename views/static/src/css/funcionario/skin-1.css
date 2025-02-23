@@ -24,16 +24,10 @@ form {
   --glow: #f0f0f0;
   --transDur: 0.4s;
 }
-.toggle {
+#toggle {
   position: fixed;
   transform: translateX(-100%);
   display: none;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 .toy-toggle span {
