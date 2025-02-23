@@ -12,22 +12,30 @@
   <meta name='description' content='O Pontual - Um aplicativo minimalista para apontamento'>
 
   <!-- Open Graph -->
-  <meta name='og:title' content='O Pontual'>
-  <meta property="og:url" content="/"> <!-- Relativeness forbidden -->
-  <meta property="og:type" content="website">
-  <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento'>
+  <meta name='og:title' content='O Pontual' />
+  <meta property="og:url" content="/" /> <!-- Relativeness forbidden -->
+  <meta property="og:type" content="website" />
+  <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento' />
   <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- Relativeness forbidden -->
 
   <!-- PWA -->
-  <link rel='manifest' href='public/manifest.json'>
-  <meta content='yes' name='mobile-web-app-capable'/>
-  <meta content='yes' name='apple-mobile-web-app-capable'/>
+  <link rel='manifest' href='public/manifest.json' />
+  <meta content='yes' name='mobile-web-app-capable' />
+  <meta content='yes' name='apple-mobile-web-app-capable' />
 
-  <script async='async' src='src\js\funcionario\debug.js'></script>
-  <script async='async' src='src\js\funcionario\data.js'></script>
-  <script async='async' src='src\js\funcionario\language.js'></script>	
-  <script async='async' src='src\js\funcionario\listener.js'></script>
-
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Pontual",
+    "url": "https://www.recursivehtml.com/",  
+    "description": "Recursive HTML is a client-side tool to test and debug little abstractions of code. You write the HTML code, and receive the output recursively.",
+    "headline": "O Pontual",
+    "image": "public/icons/favicon.ico"
+  }	
+  </script>
+	
   <script>
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('service-worker.js').then(function(registration) {
@@ -54,6 +62,11 @@
 		});
 	}
   </script>
+
+  <script async='async' src='src\js\funcionario\debug.js'></script>
+  <script async='async' src='src\js\funcionario\data.js'></script>
+  <script async='async' src='src\js\funcionario\language.js'></script>	
+  <script async='async' src='src\js\funcionario\listener.js'></script>
 
 </head>
 	
