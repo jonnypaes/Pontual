@@ -3,10 +3,14 @@
 ### Descrição
 Este documento descreve a estrutura e operações do banco de dados **MySQL**.
 
+___
+
 ### Squema
 Diagrama referente ao [Banco de dados](../../../db.sql)
 
-![EER Diagram - MySQL Workbench](eer-diagram.svg)
+[![EER Diagram - MySQL Workbench](eer-diagram.svg)](eer-diagram.svg)
+
+___
 
 ### SQL (Base)
 
@@ -21,6 +25,8 @@ Diagrama referente ao [Banco de dados](../../../db.sql)
   - [Insert](#insert)
 - [Data Query Language (DQL)](#data-query-language-dql)
   - [Select](#select)
+
+___
 
 #### Data Definition Language (DDL)
 
@@ -185,6 +191,8 @@ JOIN
 JOIN  
     EVENTOS E ON A.ID_EVENTO = E.ID;
 ```
+
+___
 
 ### SQL (Query)
 Arquivo contendo as [queries de interação](../../../models/queries.py)
