@@ -1,3 +1,5 @@
+// src/js/funcionario/language.js
+
 function ReceiveString(i18n) {
   const language = {
     AppName: i18n.APP_NAME,
