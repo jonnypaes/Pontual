@@ -1,8 +1,5 @@
-/*
-		Designed by: SELECTO
-		Original image: https://dribbble.com/shots/5311359-Diprella-Login
-*/
-
+// src/js/login.js
+=
 let switchCtn = document.querySelector("#switch-cnt");
 let switchC1 = document.querySelector("#switch-c1");
 let switchC2 = document.querySelector("#switch-c2");
