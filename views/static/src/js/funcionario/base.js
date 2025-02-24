@@ -1,3 +1,5 @@
+// src/js/funcionario/base.js
+
 // Product backbone. Entirely related to the business rule
 // That's why it is temporarily written in Brazilian Portuguese 
 
