@@ -1,5 +1,4 @@
-//const warningBefore = i18n.WARNING_BEFORE;
-//const warningAfter = i18n.WARNING_AFTER
+// src/js/funcionario/ui.js
 
 const box = document.getElementById('box');
 const buttonBox = document.querySelector('.button-container');
