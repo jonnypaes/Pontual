@@ -7,7 +7,7 @@ var checkbox = document.querySelector('input[type="checkbox"]');
 var checkbox = document.querySelector('input[type="text"]');
 
 // var isChecked;
-// checkbox.checked = isChecked;
+checkbox.checked = isChecked;
 
 var now = new Date();
 var currentHour = now.getHours();
