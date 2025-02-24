@@ -2,7 +2,6 @@
 
 let lineAdjust = ' \n';
 let showErrorsOnly = false; // isVerbose; // Set to true to show only errors
-let isDebugMode = false;
 
 // Override console.log
 const originalLog = console.log;
