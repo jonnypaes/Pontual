@@ -4,9 +4,10 @@ var latitude;
 var longitude;
 var userInput;
 var checkbox = document.querySelector('input[type="checkbox"]');
-// var isChecked;
+var checkbox = document.querySelector('input[type="text"]');
 
-checkbox.checked = isChecked;
+// var isChecked;
+// checkbox.checked = isChecked;
 
 var now = new Date();
 var currentHour = now.getHours();
