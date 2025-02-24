@@ -3,8 +3,10 @@
 var latitude;
 var longitude;
 var userInput;
+
 var checkbox = document.querySelector('input[type="checkbox"]');
 var userInput = document.querySelector('input[type="text"]');
+var message = document.getElementById('message');
 
 // var isChecked;
 checkbox.checked = isChecked;
