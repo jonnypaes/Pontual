@@ -4,7 +4,7 @@ var latitude;
 var longitude;
 var userInput;
 var checkbox = document.querySelector('input[type="checkbox"]');
-var checkbox = document.querySelector('input[type="text"]');
+var userInput = document.querySelector('input[type="text"]');
 
 // var isChecked;
 checkbox.checked = isChecked;
