@@ -30,6 +30,16 @@ form {
   display: none;
 }
 
+
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
 .toy-toggle span {
   display: block;
   position: absolute;
