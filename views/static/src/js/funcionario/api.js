@@ -109,15 +109,15 @@ function sendDataToServer() {
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/funcionario", true);
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    var isChecked = checkbox.checked;
+
 	var inputElement = document.getElementById('box').value;
 	getLocation()
 	var data = {
 		"latitude": latitude,
 		"longitude": longitude,
-		"isChecked": isChecked,
-		"descricao": inputElement,
-		"user-agent" : navigator.userAgent
+		"isChecked": checkbox.checked,
+		"userInput": inputElement,
+		"userAgent" : navigator.userAgent
 	};
 
     try {
