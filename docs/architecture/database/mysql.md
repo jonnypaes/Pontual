@@ -8,7 +8,7 @@ ___
 ### Squema
 Diagrama referente ao [Banco de dados](../../../db.sql)
 
-[![EER Diagram - MySQL Workbench](eer-diagram.svg)](eer-diagram.svg)
+![EER Diagram - MySQL Workbench](eer-diagram.svg)
 
 ___
 
