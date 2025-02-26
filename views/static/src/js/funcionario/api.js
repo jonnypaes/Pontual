@@ -125,7 +125,7 @@ async function httpMethods(method, url, body) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const text = await response.text();
+    const text = await response.json();
     return text;
   } catch (error) {
     console.error("Error fetching data:", error);
