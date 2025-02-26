@@ -3,7 +3,7 @@
 var latitude;
 var longitude;
 var userInput;
-var isChecked;
+//var isChecked;
 
 var userInput = document.querySelector('input[type="text"]');
 var message = document.getElementById('message');
