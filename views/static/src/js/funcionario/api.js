@@ -142,7 +142,7 @@ function sendDataToServer() {
 	var data = {
 		"latitude": latitude,
 		"longitude": longitude,
-		"isChecked": checkbox.checked,
+		"isChecked": isChecked,
 		"userInput": inputElement,
 		"userAgent" : navigator.userAgent
 	};
