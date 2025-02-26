@@ -23,12 +23,12 @@ function getCheckState() {
     return checkState;
 };
 
-function getCookies() {
-    checkState = getLocalStorageParam("state", isChecked);
+function getCookies(param, value) {
+    return getLocalStorageParam(param, value);
 };
 
-function setCookies() {
-    setLocalStorageParam("state", isChecked);
+function setCookies(param, value) {
+    setLocalStorageParam(param, value);
 };
 
 async function getPermissions() {
