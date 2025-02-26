@@ -103,7 +103,34 @@ function handleNotificationError(error, notificationText) {
     } else {
         console.error("Error creating notification:", error);
     }
-}
+};
+
+async function httpMethods(url, method, body) {
+  try {
+    const options = {
+      method: method,
+      headers: {
+        "Content-Type": "application/json", // Adjust the content type based on your needs
+      },
+    };
+
+    // If it's a POST request, include the body
+    if (method === "POST" && body) {
+      options.body = JSON.stringify(body); // Convert the body to JSON if POST
+    }
+
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const text = await response.text();
+    console.log(text);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
 
 function sendDataToServer() {
 	var xhr = new XMLHttpRequest();
@@ -137,4 +164,4 @@ function sendDataToServer() {
             console.error("Error in xhr.onload:", error);
         }
     };
-}
+};
