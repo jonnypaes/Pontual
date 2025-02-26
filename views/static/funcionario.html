@@ -103,7 +103,7 @@
   async function getLanguage() {
     const languageFetch = `${defaultPage}static/public/language/${languagesMatched.toLowerCase()}.json`
     try {
-      const i18n = await httpMethods(languageFetch, 'get');
+      const i18n = await httpMethods('get', languageFetch);
       const languageData = ReceiveString(i18n);
       showNotification(languageData.WELCOME);
     } catch (error) {
