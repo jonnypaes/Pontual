@@ -1,5 +1,5 @@
 // src/js/funcionario/ui.js
-var checkbox = document.querySelector('input[type="checkbox"]');
+const checkbox = document.querySelector('input[type="checkbox"]');
 const box = document.getElementById('box');
 const buttonBox = document.querySelector('.button-container');
 const Container = document.querySelector('.container');
@@ -7,23 +7,6 @@ const acceptButton = document.getElementById('acceptButton');
 const denyButton = document.getElementById('denyButton');
 
 let animationInterval;
-
-acceptButton.addEventListener('click', () => {
-	event.preventDefault();
-	animation(false);
-	setTimeout(() => {
-		afterAnimation();
-	}, 200);	
-	sendDataToServer();
-});
-
-denyButton.addEventListener('click', () => {
-	event.preventDefault(); 
-	animation(false);
-	setTimeout(() => {
-		afterAnimation();
-	}, 200);
-});
 
 function animation(accept) {
   beforeAnimation();
@@ -46,7 +29,7 @@ function animation(accept) {
       clearInterval(animationInterval);
     }
   }, 200);
-}
+};
 
 function beforeAnimation() {
 	Container.style.opacity = 1;
@@ -55,7 +38,7 @@ function beforeAnimation() {
 		Container.style.display = 'inline';
 		buttonBox.style.display = 'flex';
 	}, 200); 
-}      
+};     
 
 function afterAnimation() {
 	Container.style.opacity = 0;
@@ -64,4 +47,32 @@ function afterAnimation() {
 		Container.style.display = 'none';
 		buttonBox.style.display = 'none';
 	}, 200);  
-}
+};
+
+function setCheckState(param) {
+    if (param) {
+        document.body.classList.remove("false");
+        document.body.classList.add("true");
+    } else {
+        document.body.classList.remove("true");
+        document.body.classList.add("false");
+    }
+    return param;
+};
+
+acceptButton.addEventListener('click', () => {
+	event.preventDefault();
+	animation(false);
+	setTimeout(() => {
+		afterAnimation();
+	}, 200);	
+	sendDataToServer();
+});
+
+denyButton.addEventListener('click', () => {
+	event.preventDefault(); 
+	animation(false);
+	setTimeout(() => {
+		afterAnimation();
+	}, 200);
+});
