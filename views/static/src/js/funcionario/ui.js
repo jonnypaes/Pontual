@@ -1,5 +1,5 @@
 // src/js/funcionario/ui.js
-
+var checkbox = document.querySelector('input[type="checkbox"]');
 const box = document.getElementById('box');
 const buttonBox = document.querySelector('.button-container');
 const Container = document.querySelector('.container');
