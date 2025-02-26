@@ -101,7 +101,8 @@
 <!-- Language Fetch -->
 <script type='text/javascript'>
   async function getLanguage() {
-    const defaultPage = (window.location.protocol + '//' + window.location.hostname + window.location.pathname);	  
+    const currentUrl = new URL(window.location.href);
+    const defaultPage = new URL('..', currentUrl).pathname;	  
     const language = navigator.languages || navigator.language || navigator.userLanguage;	  
     const languagesAvailable = ["pt-BR", "en-US", "es-ES", "ru-RU"];
     const languagesMatched = (navigator.languages || [navigator.language]).find(lang => languagesAvailable.includes(lang)) || languagesAvailable[0];
