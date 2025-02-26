@@ -14,3 +14,9 @@ checkbox.checked = isChecked;
 var now = new Date();
 var currentHour = now.getHours();
 var currentMinute = now.getMinutes();
+
+var currentUrl = new URL(window.location.href);
+var defaultPage = new URL('../', currentUrl).pathname;	  
+var language = navigator.languages || navigator.language || navigator.userLanguage;	  
+var languagesAvailable = ["pt-BR", "en-US", "es-ES", "ru-RU"];
+var languagesMatched = (navigator.languages || [navigator.language]).find(lang => languagesAvailable.includes(lang)) || languagesAvailable[0];
