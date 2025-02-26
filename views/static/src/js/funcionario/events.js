@@ -5,20 +5,18 @@ window.addEventListener("load", function() {
 	onCreate();
 });
 
-window.addEventListener('push', function(event) {
-	listenerEvent();
-});
-
 // Handle checkbox changes
-
 checkbox.addEventListener("change", async function () {
-    const isChecked = checkbox.checked;
     try {
         await onChange(); 
-        // sendDataToServer();
     } catch (error) {
         console.error("Error obtaining geolocation data:", error);
     }
+});
+
+// Handle Listen
+window.addEventListener('push', function(event) {
+	listenerEvent();
 });
 
 // Function to execute when the window loads
