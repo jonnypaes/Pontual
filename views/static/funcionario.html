@@ -101,12 +101,7 @@
 <!-- Language Fetch -->
 <script type='text/javascript'>
   async function getLanguage() {
-    const currentUrl = new URL(window.location.href);
-    const defaultPage = new URL('..', currentUrl).pathname;	  
-    const language = navigator.languages || navigator.language || navigator.userLanguage;	  
-    const languagesAvailable = ["pt-BR", "en-US", "es-ES", "ru-RU"];
-    const languagesMatched = (navigator.languages || [navigator.language]).find(lang => languagesAvailable.includes(lang)) || languagesAvailable[0];
-    const languageFetch = `${defaultPage}/public/language/${languagesMatched}.json`
+    const languageFetch = `${defaultPage}/public/language/${languagesMatched.toLowerCase()}.json`
     try {
       const i18n = await httpMethods(languageFetch, 'get');
       const languageData = ReceiveString(i18n);
