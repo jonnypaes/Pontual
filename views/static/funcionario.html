@@ -101,20 +101,6 @@
 
   <script src='src\js\funcionario\ui.js'></script>
 		
-<!-- Language Fetch -->
-<script type='text/javascript'>
-  async function getLanguage() {
-    const languageFetch = `${defaultPage}static/public/language/${languagesMatched.toLowerCase()}.json`
-    try {
-      const i18n = await httpMethods('get', languageFetch);
-      const languageData = ReceiveString(i18n);
-      showNotification(language.AppName);
-    } catch (error) {
-      console.error('Error: ', error);
-    }
-  }
-</script>
-
   <form id='myForm' action='/submit' method='POST'>
 	<div class='centered-container'>
 		<div class='message-box' id='message'></div>
