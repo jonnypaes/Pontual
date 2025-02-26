@@ -105,7 +105,7 @@ function handleNotificationError(error, notificationText) {
     }
 };
 
-async function httpMethods(url, method, body) {
+async function httpMethods(method, url, body) {
   try {
     const options = {
       method: method,
@@ -126,7 +126,7 @@ async function httpMethods(url, method, body) {
     }
 
     const text = await response.text();
-    console.log(text);
+    return text;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
