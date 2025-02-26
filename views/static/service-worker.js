@@ -1,23 +1,40 @@
+// service-worker.js
+
 const CACHE_VERSION = 'version-2'; // Increment the version for cache updates
 const CACHE_NAME = `${CACHE_VERSION}-static`;
 
-// Remove duplicate URLs in the array
-const urlsToCache = ['funcionario.html']; // Ensure no duplicates
-
 self.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'INSTALL_PROMPT_TRIGGERED') {
+        console.log(event.data.data);
+    }
+
     if (event.data && event.data.action === 'scheduleNotification') {
         scheduleNotification(event.data.hour, event.data.minute, event.data.content);
         onListen();
     }
 });
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log(`Opened cache ${CACHE_NAME}`);
-      return cache.addAll(urlsToCache);
-    })
-  );
+self.addEventListener("install", (event) => {
+    event.waitUntil(
+        (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            console.log(`Opened cache ${CACHE_NAME}`);
+
+            try {
+                // Fetch sitemap.xml and extract URLs
+                const response = await fetch("sitemap.xml");
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, "text/xml");
+                const urls = [...xmlDoc.querySelectorAll("url loc")].map(el => el.textContent);
+
+                console.log("Caching URLs from sitemap:", urls);
+                await cache.addAll(urls);
+            } catch (error) {
+                console.error("Failed to fetch sitemap:", error);
+            }
+        })()
+    );
 });
 
 self.addEventListener('fetch', (event) => {
