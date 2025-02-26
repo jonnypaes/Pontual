@@ -3,8 +3,8 @@ const checkbox = document.querySelector('input[type="checkbox"]');
 const box = document.getElementById('box');
 const buttonBox = document.querySelector('.button-container');
 const Container = document.querySelector('.container');
-const acceptButton = document.getElementById('acceptButton');
-const denyButton = document.getElementById('denyButton');
+const acceptButton = document.querySelector('#acceptButton');
+const denyButton = document.querySelector('#denyButton');
 
 let animationInterval;
 
