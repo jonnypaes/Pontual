@@ -38,6 +38,7 @@ async function getNotification() {
                 console.log("Notification permission status:", permission);
                 if (permission === 'granted') {
                     resolve(permission);
+		    scheduleNotifications(notificationTimes);	
                 } else {
                     reject(new Error("Notification permission denied."));
                 }
@@ -91,7 +92,7 @@ function handleNotificationError(error, notificationText) {
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.ready.then((registration) => {
                 registration.showNotification("Pontual!", {
-                    body: notificationText || "Test notification",
+                    body: notificationText || "SW Notification",
                     icon: "public/icons/icon.png"
                 });
             }).catch((error) => {
