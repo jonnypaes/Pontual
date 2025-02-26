@@ -6,7 +6,7 @@ window.addEventListener("load", function() {
 });
 
 // Handle checkbox changes
-checkbox.addEventListener("change", async function () {
+checkbox.addEventListener("change", function () {
     try {
         await onChange(); 
     } catch (error) {
