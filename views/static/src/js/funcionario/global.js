@@ -5,11 +5,8 @@ var longitude;
 var userInput;
 var isChecked;
 
-var checkbox = document.querySelector('input[type="checkbox"]');
 var userInput = document.querySelector('input[type="text"]');
 var message = document.getElementById('message');
-
-checkbox.checked = isChecked;
 
 var now = new Date();
 var currentHour = now.getHours();
