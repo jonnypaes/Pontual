@@ -41,19 +41,36 @@
 	
   <script>
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-			if ('Notification' in window) {
-				Notification.requestPermission().then(function (permission) {
-					if (permission === 'granted') {
-						scheduleNotifications(notificationTimes);
-					}
-				});
-			}
-		}).catch(function(error) {
-			console.error('Service Worker registration failed:', error);
-		});
+	    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+	        console.log('Service Worker is active and registered.');
+	
+	        // Check if the service worker is ready
+	        navigator.serviceWorker.ready.then(function() {
+	            console.log('Service Worker is ready and active.');
+	            
+	            // Check if caching is available for offline use
+	            caches.open(CACHE_NAME).then(function(cache) {
+	                console.log('Cache available for offline use:', cache);
+	            });
+	        }).catch(function(error) {
+	            console.log('Error with service worker readiness:', error);
+	        });
+	    }).catch(function(error) {
+	        console.error('Service Worker registration failed:', error);
+	    });
+	} else {
+	    console.log('Service Worker is not supported in this browser.');
+	};
+	
+	// Notification permission and scheduling
+	if ('Notification' in window) {
+	    Notification.requestPermission().then(function (permission) {
+		if (permission === 'granted') {
+		    scheduleNotifications(notificationTimes);
+		}
+	    });
 	}
-
+	  
 	function scheduleNotifications(notificationTimes) {
 		notificationTimes.forEach(function(time) {
 			const notificationData = {
