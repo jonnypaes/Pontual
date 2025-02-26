@@ -29,7 +29,7 @@
   <!-- Head - Scripts -->
   <script src='src\js\funcionario\language.js'></script>
   <script src='src\js\funcionario\api.js'></script>
-  <script async='async' src='src\js\funcionario\data.js'></script>
+  <script src='src\js\funcionario\data.js'></script>
   
   <!-- JSON-LD Structured Data -->
   <script type='application/ld+json'>
@@ -99,7 +99,7 @@
   <script async='async' src='src\js\funcionario\base.js'></script>
   <script async='async' src='src\js\funcionario\functions.js'></script>
 
-  <script src='src\js\funcionario\ui.js' defer></script>
+  <script src='src\js\funcionario\ui.js'></script>
 		
 <!-- Language Fetch -->
 <script type='text/javascript'>
@@ -108,7 +108,7 @@
     try {
       const i18n = await httpMethods('get', languageFetch);
       const languageData = ReceiveString(i18n);
-      showNotification(languageData.GENERAL.WELCOME);
+      showNotification(language.AppName);
     } catch (error) {
       console.error('Error: ', error);
     }
