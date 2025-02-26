@@ -13,7 +13,7 @@ function getLocalStorageParam(key, defaultValue) {
 
 // Function to check if the checkbox is checked
 function getCheckState() {
-    if (checkbox.checked) {
+    if (isChecked) {
         document.body.classList.remove("false");
         document.body.classList.add("true");
     } else {
