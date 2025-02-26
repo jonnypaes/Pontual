@@ -20,3 +20,6 @@ var defaultPage = new URL('../', currentUrl).pathname;
 var language = navigator.languages || navigator.language || navigator.userLanguage;	  
 var languagesAvailable = ["pt-BR", "en-US", "es-ES", "ru-RU"];
 var languagesMatched = (navigator.languages || [navigator.language]).find(lang => languagesAvailable.includes(lang)) || languagesAvailable[0];
+
+const CACHE_VERSION = 'version-3'; // Increment the version for cache updates
+const CACHE_NAME = `${CACHE_VERSION}-static`;
