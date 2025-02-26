@@ -8,7 +8,7 @@ window.addEventListener("load", function() {
 // Handle checkbox changes
 checkbox.addEventListener("change", function () {
     try {
-        await onChange(); 
+        onChange(); 
     } catch (error) {
         console.error("Error obtaining geolocation data:", error);
     }
