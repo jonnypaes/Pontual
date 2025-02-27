@@ -2,7 +2,7 @@
 
 O Pontual é um aplicativo que busca o minimalismo para o cliente final e oferece uma ampla gama de dados para registro de apontamento em sua empresa.
 
-![WallPaper](views/static/public/graph/1280x720.jpg)
+![Wallpaper](views/static/public/graph/1280x720.jpg)
 
 > O Pontual - Um aplicativo minimalista para apontamento
 
