@@ -70,26 +70,6 @@
 	} else {
 	    console.log('Service Worker is not supported in this browser.');
 	};
-	
-	// Notification permission and scheduling
-	if ('Notification' in window) {
-	    Notification.requestPermission().then(function (permission) {
-		if (permission === 'granted') {
-		    scheduleNotifications(notificationTimes);
-		}
-	    });
-	};
-	  
-	function scheduleNotifications(notificationTimes) {
-		notificationTimes.forEach(function(time) {
-			const notificationData = {
-				action: 'scheduleNotification',
-				hour: time.hour,
-				minute: time.minute,
-				content: time.content
-			};
-		});
-	};
   </script>
 
 </head>
