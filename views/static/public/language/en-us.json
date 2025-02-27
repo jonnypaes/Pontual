@@ -1,6 +1,8 @@
 {
   "LOCALE": "English",
   "APP_NAME": "The Punctual",
+  "SHORT_NAME": "Punctual",
+  "DESCRIPTION": "The Punctual - A minimalist app for clock-in",	 
   "GENERAL": {
     "EN_US_BUTTON": "English",
     "PT_BR_BUTTON": "Português (Brasil)",
