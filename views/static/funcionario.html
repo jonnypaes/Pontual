@@ -56,11 +56,7 @@
 	        // Check if the service worker is ready
 	        navigator.serviceWorker.ready.then(function() {
 	            console.log('Service Worker is ready and active.');
-	            
-	            // Check if caching is available for offline use
-	            caches.open(CACHE_NAME).then(function(cache) {
-	                console.log('Cache available for offline use:', cache);
-	            });
+
 	        }).catch(function(error) {
 	            console.log('Error with service worker readiness:', error);
 	        });
