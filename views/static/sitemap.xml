@@ -8,13 +8,7 @@
         <loc>service-worker.js</loc>
     </url>
     <url>
-        <loc>storage.js</loc>
-    </url>
-    <url>
         <loc>public/manifest.json</loc>
-    </url>
-    <url>
-        <loc>public/offline.html</loc>
     </url>
     <url>
         <loc>public/robots.txt</loc>
@@ -24,9 +18,6 @@
     </url>
     <url>
         <loc>public/graph/512x512.jpg</loc>
-    </url>
-    <url>
-        <loc>public/graph/splash-screen.json</loc>
     </url>
     <url>
         <loc>public/graph/screenshots/checkbox-off.png</loc>
