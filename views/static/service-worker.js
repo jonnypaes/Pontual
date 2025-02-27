@@ -1,4 +1,7 @@
 // service-worker.js
+const CACHE_VERSION = 'version-3'; // Increment the version for cache updates
+const CACHE_NAME = `${CACHE_VERSION}-static`;
+
 self.addEventListener('message', function(event) {
     if (event.data && event.data.type === 'INSTALL_PROMPT_TRIGGERED') {
         console.log(event.data.data);
