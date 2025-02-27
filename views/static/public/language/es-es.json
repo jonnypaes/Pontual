@@ -1,6 +1,8 @@
 {
   "LOCALE": "Español",
   "APP_NAME": "El Puntual",
+  "SHORT_NAME": "Puntual",
+  "DESCRIPTION": "El Puntual - Una aplicación minimalista para tomar notas",	 
   "GENERAL": {
     "EN_US_BUTTON": "English",
     "PT_BR_BUTTON": "Português (Brasil)",
