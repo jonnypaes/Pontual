@@ -1,6 +1,7 @@
 {
   "LOCALE": "Português (Brasil)",
   "APP_NAME": "O Pontual",
+  "SHORT_NAME": "Pontual",
   "DESCRIPTION": "O Pontual - Um aplicativo minimalista para apontamento",	
   "GENERAL": {
     "EN_US_BUTTON": "English",
