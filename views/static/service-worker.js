@@ -18,11 +18,15 @@ self.addEventListener("install", (event) => {
 
             try {
                 // Fetch sitemap.xml and extract URLs
-                const response = await fetch("sitemap.xml");
-                const text = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(text, "text/xml");
-                const urls = [...xmlDoc.querySelectorAll("url loc")].map(el => el.textContent);
+                //const response = await fetch('sitemap.xml');
+                //const text = await response.text();
+                
+                const response = await httpMethods('get', 'sitemap.xml');
+                const urls = [...response.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+
+                //const parser = new DOMParser();
+                //const xmlDoc = parser.parseFromString(text, "text/xml");
+                //const urls = [...xmlDoc.querySelectorAll("url loc")].map(el => el.textContent);
 
                 console.log("Caching URLs from sitemap:", urls);
                 await cache.addAll(urls);
