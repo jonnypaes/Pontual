@@ -126,8 +126,14 @@ async function httpMethods(method, url, body) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const text = await response.json();
-    return text;
+    // Determine response type dynamically
+    const contentType = response.headers.get("Content-Type");
+
+    if (contentType && contentType.includes("application/json")) {
+      return await response.json();
+    } else {
+      return await response.text(); // Handles XML and other text-based responses
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
