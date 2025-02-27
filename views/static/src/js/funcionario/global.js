@@ -21,3 +21,22 @@ CanonicalLink = document.createElement('link');
 CanonicalLink.rel = 'canonical';
 CanonicalLink.href = defaultPage;
 document.head.appendChild(link);
+
+function createMetaTag(name, content, isProperty = false) {
+    const meta = document.createElement('meta');
+    if (isProperty) {
+        meta.setAttribute('property', name);
+    } else {
+        meta.setAttribute('name', name);
+    }
+    meta.setAttribute('content', content);
+    document.head.appendChild(meta);
+}
+
+createMetaTag('title', 'O Pontual');
+createMetaTag('og:title', 'O Pontual');
+createMetaTag('og:url', CanonicalLink, true);
+createMetaTag('og:image', `${defaultPage}static/public/graph/512x512.jpg`, true);
+createMetaTag('og:type', 'website', true);
+createMetaTag('description', 'O Pontual - Um aplicativo minimalista para apontamento');
+createMetaTag('og:description', 'O Pontual - Um aplicativo minimalista para apontamento');
