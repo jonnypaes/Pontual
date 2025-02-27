@@ -10,7 +10,7 @@
   "theme_color": "#FFFFFF",
   "description": "O Pontual - Um aplicativo minimalista para apontamento",
   "orientation": "natural",
-  "background_color": "#FFFFFF",
+  "background_color": "#5A5A5A",
   "related_applications": [],
   "prefer_related_applications": false,
   "display_override": ["window-controls-overlay"],
