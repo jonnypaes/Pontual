@@ -1,6 +1,8 @@
 {
   "LOCALE": "Русский",
   "APP_NAME": "Пунктуальный",
+  "SHORT_NAME": "Пунктуальный",
+  "DESCRIPTION": "Пунктуальный - Минималистичное приложение для регистрации времени",	  
   "GENERAL": {
     "EN_US_BUTTON": "English",
     "PT_BR_BUTTON": "Português (Бразилия)",
