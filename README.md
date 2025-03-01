@@ -40,7 +40,7 @@ Para mais informações sobre componentes usados no projeto, leia [Componentes d
 <figure> <img width="300" height="475" src="views/static/public/graph/screenshots/checkbox-on.png"> </figure>
 </div>
 
-Caso queira ter uma prévia do front-end clique [aqui](views/static/funcionario.html)
+Veja uma demonstração clicando [aqui](views/static/funcionario.html)
 
 ### Instalação
 - Extraia o conteúdo do zip em um diretório
