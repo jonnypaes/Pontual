@@ -52,14 +52,10 @@ async function loadManifestMeta() {
 
     // Helper to create comments with a line break before
     function createCommentWithLineBreak(commentText) {
-      // Insert a newline and comment text
       const comment = document.createComment(commentText);
-      document.head.appendChild(comment);  // Add the comment after the line break
+      document.head.appendChild(document.createTextNode('\n'));
+      document.head.appendChild(comment);
     }
-
-    // Get the current URL and default page for proper concatenation
-    const currentUrl = new URL(window.location.href);
-    const defaultPage = new URL('../', currentUrl).pathname;
 
     // Begin adding meta tags
     createCommentWithLineBreak("Open Graph / Meta tags (dynamic)");
