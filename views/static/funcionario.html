@@ -13,15 +13,16 @@
 
   <!-- Open Graph -->
   <meta name='og:title' content='O Pontual' />
-  <meta property='og:url' content='/' /> <!-- Relativeness forbidden -->
-  <meta property='og:type' content='website' />
   <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento' />
   <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- Relativeness forbidden -->
-
+  <meta name='mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-capable' content='yes' />
+  <meta property='og:url' content='/' /> <!-- Relativeness forbidden -->
+  <meta property='og:type' content='website' />
+	
   <!-- PWA -->
   <link rel='manifest' href='public/manifest.json' />
-  <meta content='yes' name='mobile-web-app-capable' />
-  <meta content='yes' name='apple-mobile-web-app-capable' />
+  <script type='module' src='src\js\funcionario\global.js'></script>
 
   <!-- Front-end Debugger -->
   <script src='https://jonnypaes.github.io/console.js/console.js'></script>
@@ -29,7 +30,6 @@
   <!-- Head - Scripts -->
   <script src='src\js\funcionario\language.js'></script>
   <script src='src\js\funcionario\api.js'></script>
-  <script src='src\js\funcionario\global.js'></script>
   <script src='src\js\funcionario\data.js'></script>
   <script src='src\js\funcionario\functions.js'></script>
 
