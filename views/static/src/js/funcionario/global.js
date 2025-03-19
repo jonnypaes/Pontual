@@ -17,37 +17,30 @@ var language = navigator.languages || navigator.language || navigator.userLangua
 var languagesAvailable = ["pt-BR", "en-US", "es-ES", "ru-RU"];
 var languagesMatched = (navigator.languages || [navigator.language]).find(lang => languagesAvailable.includes(lang)) || languagesAvailable[0];
 
-// Use top-level await in this module to load and process the manifest
 async function loadManifestMeta() {
   try {
-    // Use the manifest link tag if available, else default to "manifest.json"
+    // Resolve the manifest URL via the link tag or default to "manifest.json"
     const manifestLink = document.querySelector('link[rel="manifest"]');
     const manifestUrl = manifestLink ? manifestLink.href : 'manifest.json';
     const response = await fetch(manifestUrl);
     const manifest = await response.json();
 
-    // Set the HTML lang and direction
-    if (manifest.lang) {
-      document.documentElement.lang = manifest.lang;
-    }
-    if (manifest.dir) {
-      document.documentElement.dir = manifest.dir;
-    }
+    // Set HTML language and text direction
+    if (manifest.lang) document.documentElement.lang = manifest.lang;
+    if (manifest.dir) document.documentElement.dir = manifest.dir;
 
-    // Set the document title from the manifest "name"
-    if (manifest.name) {
-      document.title = manifest.name;
-    }
+    // Set the document title from the manifest
+    if (manifest.name) document.title = manifest.name;
 
-    // Helper to create meta tags and append them to head
-    function createMeta(attributeType, attributeValue, content) {
+    // Helper to create meta tags
+    function createMeta(attrType, attrValue, content) {
       const meta = document.createElement('meta');
-      meta.setAttribute(attributeType, attributeValue);
+      meta.setAttribute(attrType, attrValue);
       meta.setAttribute('content', content);
       document.head.appendChild(meta);
     }
 
-    // Description meta tag
+    // Description meta
     if (manifest.description) {
       createMeta('name', 'description', manifest.description);
     }
@@ -59,29 +52,35 @@ async function loadManifestMeta() {
     if (manifest.description) {
       createMeta('property', 'og:description', manifest.description);
     }
-    // Set og:type to "website"
     createMeta('property', 'og:type', 'website');
-    // Set og:locale using the manifest language
     if (manifest.lang) {
       createMeta('property', 'og:locale', manifest.lang);
     }
-    // Use the screenshot with label "Wallpaper" for og:image
+    // Use the "Wallpaper" screenshot as og:image (if available)
     if (Array.isArray(manifest.screenshots)) {
       const wallpaper = manifest.screenshots.find(s => s.label === "Wallpaper");
       if (wallpaper && wallpaper.src) {
-        createMeta('property', 'og:image', wallpaper.src);
+        // Resolve the screenshot's relative URL to an absolute one
+        const imgUrl = new URL(wallpaper.src, window.location.href).href;
+        createMeta('property', 'og:image', imgUrl);
       }
     }
-    // Optionally, use "start_url" as og:url and add a canonical link
+
+    // Get the current URL and default page for proper concatenation
+    const currentUrl = new URL(window.location.href);
+    const defaultPage = new URL('../', currentUrl).pathname;
+
+    // Use manifest.start_url (resolved against currentUrl) for og:url and canonical link
     if (manifest.start_url) {
-      createMeta('property', 'og:url', manifest.start_url);
+      const resolvedStartUrl = new URL(manifest.start_url, currentUrl).href;
+      createMeta('property', 'og:url', resolvedStartUrl);
       const canonical = document.createElement('link');
       canonical.rel = 'canonical';
-      canonical.href = manifest.start_url;
+      canonical.href = resolvedStartUrl;
       document.head.appendChild(canonical);
     }
 
-    // Theme and background color meta tags
+    // Theme and background colors
     if (manifest.theme_color) {
       createMeta('name', 'theme-color', manifest.theme_color);
     }
@@ -89,26 +88,45 @@ async function loadManifestMeta() {
       createMeta('name', 'background-color', manifest.background_color);
     }
 
-    // Add icons as link tags (including favicon)
+    // Add icons as link tags (resolve their URLs as needed)
     if (Array.isArray(manifest.icons)) {
       manifest.icons.forEach(icon => {
         const link = document.createElement('link');
-        // For favicon purposes, we add every icon (browsers may pick the best match)
         link.rel = 'icon';
-        link.href = icon.src;
-        if (icon.sizes) {
-          link.sizes = icon.sizes;
-        }
-        if (icon.type) {
-          link.type = icon.type;
-        }
+        link.href = new URL(icon.src, window.location.href).href;
+        if (icon.sizes) link.sizes = icon.sizes;
+        if (icon.type) link.type = icon.type;
         document.head.appendChild(link);
       });
     }
+
+    // Now, add JSON‑LD structured data at runtime
+    function createJsonLd(jsonObj) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(jsonObj);
+      document.head.appendChild(script);
+    }
+
+    // Construct JSON‑LD using manifest data and your URL logic.
+    // Note: Adjust the image path as needed; here we concatenate defaultPage with a fixed image path.
+    const jsonLdData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": manifest.name || "Website",
+      "url": manifest.start_url ? new URL(manifest.start_url, currentUrl).href : currentUrl.href,
+      "description": manifest.description,
+      "image": new URL(`${defaultPage}static/public/graph/512x512.jpg`, currentUrl).href,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${currentUrl.href}search?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    };
+    createJsonLd(jsonLdData);
+
   } catch (error) {
     console.error("Error loading manifest:", error);
   }
 };
-
-// Await the manifest meta loading so that it executes before further rendering if possible.
 await loadManifestMeta();
