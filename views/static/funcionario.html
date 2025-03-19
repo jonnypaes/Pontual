@@ -5,20 +5,15 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
   <meta charset='UTF-8'>
   <title>O Pontual</title>
-  <link href='public/icons/favicon.ico' rel='icon' type='image/x-icon' />
   <link rel='stylesheet' type='text/css' href='src\css\funcionario\skin-1.css' />
-  <link href='public/icons/mipmap-xxxhdpi/ic_launcher.png' rel='icon' sizes='192x192' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <meta name='description' content='O Pontual - Um aplicativo minimalista para apontamento' />
-
-  <!-- Open Graph -->
-  <meta name='og:title' content='O Pontual' />
-  <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento' />
-  <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- Relativeness forbidden -->
+  
   <meta name='mobile-web-app-capable' content='yes' />
   <meta name='apple-mobile-web-app-capable' content='yes' />
-  <meta property='og:url' content='/' /> <!-- Relativeness forbidden -->
-  <meta property='og:type' content='website' />
+
+  <!-- Icons -->
+  <link href='public/icons/mipmap-xxxhdpi/ic_launcher.png' rel='icon' sizes='192x192' />
+  <link href='public/icons/favicon.ico' rel='icon' type='image/x-icon' />
 	
   <!-- PWA -->
   <link rel='manifest' href='public/manifest.json' />
@@ -34,19 +29,6 @@
   <script src='src\js\funcionario\functions.js'></script>
 
   <script async='async' src='src\js\funcionario\listener.js'></script>	
-	
-  <!-- JSON-LD Structured Data -->
-  <script type='application/ld+json'>
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Pontual",
-    "url": "/",  
-    "description": "O Pontual - Um aplicativo minimalista para apontamento",
-    "headline": "O Pontual",
-    "image": "public/icons/favicon.ico"
-  }	
-  </script>
 	
   <script>
 	if ('serviceWorker' in navigator) {
@@ -71,7 +53,7 @@
 </head>
 	
 <body>
-  <!-- Head - Scripts -->
+  <!-- Body - Scripts -->
   <script src='src\js\funcionario\ui.js' defer></script>	
   <script src='src\js\funcionario\events.js' defer></script>
   <script src='src\js\funcionario\base.js' defer></script>	
