@@ -50,21 +50,29 @@ async function loadManifestMeta() {
       document.head.appendChild(link);
     }
 
+    // Helper to create comments with a line break before
+    function createCommentWithLineBreak(commentText) {
+      // Insert a newline and comment text
+      const comment = document.createComment(commentText);
+      document.head.appendChild(comment);  // Add the comment after the line break
+    }
+
+    // Get the current URL and default page for proper concatenation
+    const currentUrl = new URL(window.location.href);
+    const defaultPage = new URL('../', currentUrl).pathname;
+
     // Begin adding meta tags
-    const commentMeta = document.createComment("<!-- Meta tags (dynamic) -->");
-    document.head.appendChild(commentMeta);
+    createCommentWithLineBreak("Open Graph / Meta tags (dynamic)");
 
     // Description meta
     if (manifest.description) {
       createMeta('name', 'description', manifest.description);
+      createMeta('property', 'og:description', manifest.description);
     }
 
     // Open Graph meta tags
     if (manifest.name) {
       createMeta('property', 'og:title', manifest.name);
-    }
-    if (manifest.description) {
-      createMeta('property', 'og:description', manifest.description);
     }
     createMeta('property', 'og:type', 'website');
     if (manifest.lang) {
@@ -75,7 +83,7 @@ async function loadManifestMeta() {
       const wallpaper = manifest.screenshots.find(s => s.label === "Wallpaper");
       if (wallpaper && wallpaper.src) {
         // Resolve the screenshot's relative URL to an absolute one
-        const imgUrl = new URL(wallpaper.src, window.location.href).href;
+        const imgUrl = new URL(wallpaper.src, currentUrl).href;
         createMeta('property', 'og:image', imgUrl);
       }
     }
@@ -99,19 +107,17 @@ async function loadManifestMeta() {
     }
 
     // Begin adding link tags for icons
-    const commentLinks = document.createComment("<!-- Link tags for icons (dynamic) -->");
-    document.head.appendChild(commentLinks);
+    createCommentWithLineBreak("Link tags for icons (dynamic)");
 
     // Add icons as link tags (resolve their URLs as needed)
     if (Array.isArray(manifest.icons)) {
       manifest.icons.forEach(icon => {
-        createLink('icon', new URL(icon.src, window.location.href).href, icon.sizes, icon.type);
+        createLink('icon', new URL(icon.src, currentUrl).href, icon.sizes, icon.type);
       });
     }
 
     // Begin adding JSON-LD structured data
-    const commentJsonLd = document.createComment("<!-- JSON-LD Structured Data (dynamic) -->");
-    document.head.appendChild(commentJsonLd);
+    createCommentWithLineBreak("JSON-LD Structured Data (dynamic)");
 
     // Construct JSON‑LD using manifest data and your URL logic.
     const jsonLdData = {
@@ -132,4 +138,3 @@ async function loadManifestMeta() {
   }
 }
 await loadManifestMeta();
-
