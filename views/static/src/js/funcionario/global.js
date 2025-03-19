@@ -40,6 +40,20 @@ async function loadManifestMeta() {
       document.head.appendChild(meta);
     }
 
+    // Helper to create link tags
+    function createLink(rel, href, sizes = '', type = '') {
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.href = href;
+      if (sizes) link.sizes = sizes;
+      if (type) link.type = type;
+      document.head.appendChild(link);
+    }
+
+    // Begin adding meta tags
+    const commentMeta = document.createComment("<!-- Meta tags (dynamic) -->");
+    document.head.appendChild(commentMeta);
+
     // Description meta
     if (manifest.description) {
       createMeta('name', 'description', manifest.description);
@@ -66,11 +80,7 @@ async function loadManifestMeta() {
       }
     }
 
-    // Get the current URL and default page for proper concatenation
-    const currentUrl = new URL(window.location.href);
-    const defaultPage = new URL('../', currentUrl).pathname;
-
-    // Use manifest.start_url (resolved against currentUrl) for og:url and canonical link
+    // Open Graph and Canonical URLs (with dynamic concatenation)
     if (manifest.start_url) {
       const resolvedStartUrl = new URL(manifest.start_url, currentUrl).href;
       createMeta('property', 'og:url', resolvedStartUrl);
@@ -80,7 +90,7 @@ async function loadManifestMeta() {
       document.head.appendChild(canonical);
     }
 
-    // Theme and background colors
+    // Add theme color and background color
     if (manifest.theme_color) {
       createMeta('name', 'theme-color', manifest.theme_color);
     }
@@ -88,45 +98,38 @@ async function loadManifestMeta() {
       createMeta('name', 'background-color', manifest.background_color);
     }
 
+    // Begin adding link tags for icons
+    const commentLinks = document.createComment("<!-- Link tags for icons (dynamic) -->");
+    document.head.appendChild(commentLinks);
+
     // Add icons as link tags (resolve their URLs as needed)
     if (Array.isArray(manifest.icons)) {
       manifest.icons.forEach(icon => {
-        const link = document.createElement('link');
-        link.rel = 'icon';
-        link.href = new URL(icon.src, window.location.href).href;
-        if (icon.sizes) link.sizes = icon.sizes;
-        if (icon.type) link.type = icon.type;
-        document.head.appendChild(link);
+        createLink('icon', new URL(icon.src, window.location.href).href, icon.sizes, icon.type);
       });
     }
 
-    // Now, add JSON‑LD structured data at runtime
-    function createJsonLd(jsonObj) {
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.textContent = JSON.stringify(jsonObj);
-      document.head.appendChild(script);
-    }
+    // Begin adding JSON-LD structured data
+    const commentJsonLd = document.createComment("<!-- JSON-LD Structured Data (dynamic) -->");
+    document.head.appendChild(commentJsonLd);
 
     // Construct JSON‑LD using manifest data and your URL logic.
-    // Note: Adjust the image path as needed; here we concatenate defaultPage with a fixed image path.
     const jsonLdData = {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": manifest.name || "Website",
       "url": manifest.start_url ? new URL(manifest.start_url, currentUrl).href : currentUrl.href,
       "description": manifest.description,
-      "image": new URL(`${defaultPage}static/public/graph/512x512.jpg`, currentUrl).href,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${currentUrl.href}search?q={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
+      "image": new URL(`${defaultPage}static/public/graph/512x512.jpg`, currentUrl).href
     };
-    createJsonLd(jsonLdData);
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(jsonLdData);
+    document.head.appendChild(script);
 
   } catch (error) {
     console.error("Error loading manifest:", error);
   }
-};
+}
 await loadManifestMeta();
+
