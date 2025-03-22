@@ -61,7 +61,7 @@ Caso o banco não funcione, abra-o manualmente no arquivo **`#docker.ps1`**, op�
 
 O software é licenciado com licença MIT e permite o uso comercial e não comercial do software, alteração e distribuição livre. 
 
-Para mais informações, leia o arquivo de [licença](LICENSE)
+Para mais informações, leia o arquivo de [licença](LICENSE.txt)
 
 ## Links
 
