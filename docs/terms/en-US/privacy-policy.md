@@ -2,7 +2,7 @@
 
 Effective Date: November 5, 2023
 
-"O Pontual" "[https://opontual.app](https://opontual.app)" operates the website / mobile application "The Punctual."
+["Pontual"](https://github.com/jonnypaes/Pontual) operates the website / mobile application "The Punctual."
 
 ### Collection and Use of Information
 
@@ -27,4 +27,4 @@ We recommend that you periodically review this Privacy Policy to check for any c
 ### Contact Us
 
 If you have any questions about this Privacy Policy, please contact us:
-- By visiting this page on our website: [https://opontual.app](https://opontual.app)
+- By visiting this page on our website: [Pontual](https://github.com/jonnypaes/Pontual)
