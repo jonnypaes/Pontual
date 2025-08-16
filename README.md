@@ -65,4 +65,4 @@ Para mais informações, leia o arquivo de [licença](LICENSE.txt)
 
 ## Links
 
-[OPontual.app](https://opontual.app) | [GitHub](https://github.com/JonnyPaes/Pontual) | [GitHub Sites](https://JonnyPaes.github.io/Pontual)
+[GitHub](https://github.com/JonnyPaes/Pontual) | [GitHub Sites](https://JonnyPaes.github.io/Pontual)
