@@ -2,7 +2,7 @@
 
 Data efetiva: 5 de novembro de 2023
 
-"O Pontual" "[https://opontual.app](https://opontual.app)" opera o website / aplicativo móvel "O Pontual".
+["Pontual"](https://github.com/jonnypaes/Pontual) opera o website / aplicativo móvel "O Pontual".
 
 ### Coleta e uso de informações
 
@@ -27,4 +27,4 @@ Recomendamos que você revise periodicamente esta Política de Privacidade para 
 ### Contate-nos
 
 Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:
-- Visitando esta página em nosso site: [opontual.app](https://opontual.app)
+- Visitando esta página em nosso site: [Pontual](https://github.com/jonnypaes/Pontual)
