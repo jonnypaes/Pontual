@@ -80,7 +80,7 @@ async function loadManifestMeta() {
       const wallpaper = manifest.screenshots.find(s => s.label === "Wallpaper");
       if (wallpaper && wallpaper.src) {
         // Resolve the screenshot's relative URL to an absolute one
-        const imgUrl = new URL(wallpaper.src, currentUrl).href;
+        const imgUrl = new URL(wallpaper.src, manifestBaseUrl).href;
         createMeta('property', 'og:image', imgUrl);
       }
     }
@@ -123,7 +123,7 @@ async function loadManifestMeta() {
       "name": manifest.name || "Website",
       "url": manifest.start_url ? new URL(manifest.start_url, currentUrl).href : currentUrl.href,
       "description": manifest.description,
-      "image": new URL(`${defaultPage}static/public/graph/512x512.jpg`, currentUrl).href
+      "image": new URL(`graph/512x512.jpg`, manifestBaseUrl).href
     };
     const script = document.createElement('script');
     script.type = 'application/ld+json';
