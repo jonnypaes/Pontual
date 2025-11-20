@@ -42,6 +42,9 @@ function findEvent() {
 }
 
 function verifyEvent() {
+  const now = new Date(); // Creates a Date object for the current moment
+  const currentHour = now.getHours(); // Gets the hour in 24-hour format (0-23)
+  const currentMinute = now.getMinutes();
   const timeMin = currentHour * 60 + currentMinute;
 
   if (timeMin < entrada) {
