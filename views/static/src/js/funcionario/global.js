@@ -21,8 +21,9 @@ async function loadManifestMeta() {
   try {
     // Resolve the manifest URL via the link tag or default to "manifest.json"
     const manifestLink = document.querySelector('link[rel="manifest"]');
-    const manifestUrl = manifestLink ? manifestLink.href : 'manifest.json';
-    const response = await fetch(manifestUrl);
+    const manifestHref = manifestLink ? manifestLink.href : 'manifest.json';
+    const manifestBaseUrl = new URL(manifestHref, window.location.href);
+    const response = await fetch(manifestBaseUrl);
     const manifest = await response.json();
 
     // Set HTML language and text direction
@@ -107,8 +108,8 @@ async function loadManifestMeta() {
     // Add icons as link tags (resolve their URLs as needed)
     if (Array.isArray(manifest.icons)) {
       manifest.icons.forEach(icon => {
-        const iconPath = `${defaultPage}public/${icon.src}`;
-        createLink('icon', new URL(iconPath, currentUrl).href, icon.sizes, icon.type);
+        const iconUrl = new URL(icon.src, manifestBaseUrl).href;
+        createLink('icon', iconUrl, icon.sizes, icon.type);
       });
     }
 
