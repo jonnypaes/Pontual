@@ -86,11 +86,10 @@ async function loadManifestMeta() {
 
     // Open Graph and Canonical URLs (with dynamic concatenation)
     if (manifest.start_url) {
-      const resolvedStartUrl = new URL(manifest.start_url, currentUrl).href;
-      createMeta('property', 'og:url', resolvedStartUrl);
+      createMeta('property', 'og:url', currentUrl);
       const canonical = document.createElement('link');
       canonical.rel = 'canonical';
-      canonical.href = resolvedStartUrl;
+      canonical.href = currentUrl;
       document.head.appendChild(canonical);
     }
 
@@ -108,7 +107,8 @@ async function loadManifestMeta() {
     // Add icons as link tags (resolve their URLs as needed)
     if (Array.isArray(manifest.icons)) {
       manifest.icons.forEach(icon => {
-        createLink('icon', new URL(icon.src, currentUrl).href, icon.sizes, icon.type);
+        const iconPath = `${defaultPage}public/${icon.src}`;
+        createLink('icon', new URL(iconPath, currentUrl).href, icon.sizes, icon.type);
       });
     }
 
