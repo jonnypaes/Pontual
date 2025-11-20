@@ -5,101 +5,63 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
   <meta charset='UTF-8'>
   <title>O Pontual</title>
-  <link href='public/icons/favicon.ico' rel='icon' type='image/x-icon'/>
-  <link rel='stylesheet' type='text/css' href='src\css\funcionario\skin-1.css'/>
-  <link href='public/icons/mipmap-xxxhdpi/ic_launcher.png' rel='icon' sizes='192x192'/>
+  <link rel='stylesheet' type='text/css' href='src\css\funcionario\skin-1.css' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <meta name='description' content='O Pontual - Um aplicativo minimalista para apontamento'>
+  
+  <meta name='mobile-web-app-capable' content='yes' />
+  <meta name='apple-mobile-web-app-capable' content='yes' />
 
-  <!-- Open Graph -->
-  <meta name='og:title' content='O Pontual' />
-  <meta property='og:url' content='/' /> <!-- Relativeness forbidden -->
-  <meta property='og:type' content='website' />
-  <meta name='og:description' content='O Pontual - Um aplicativo minimalista para apontamento' />
-  <meta name='og:image' content='public/graph/512x512.jpg' /> <!-- Relativeness forbidden -->
-
+  <!-- Icons -->
+  <link href='public/icons/mipmap-xxxhdpi/ic_launcher.png' rel='icon' sizes='192x192' />
+  <link href='public/icons/favicon.ico' rel='icon' type='image/x-icon' />
+	
   <!-- PWA -->
   <link rel='manifest' href='public/manifest.json' />
-  <meta content='yes' name='mobile-web-app-capable' />
-  <meta content='yes' name='apple-mobile-web-app-capable' />
+  <script type='module' src='src\js\funcionario\global.js'></script>
 
-  <!-- JSON-LD Structured Data -->
-  <script type='application/ld+json'>
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Pontual",
-    "url": "/",  
-    "description": "O Pontual - Um aplicativo minimalista para apontamento",
-    "headline": "O Pontual",
-    "image": "public/icons/favicon.ico"
-  }	
-  </script>
+  <!-- Front-end Debugger -->
+  <script src='https://jonnypaes.github.io/console.js/console-min.js'></script>
+
+  <!-- Head - Scripts -->
+  <script src='src\js\funcionario\language.js'></script>
+  <script src='src\js\funcionario\api.js'></script>
+  <script src='src\js\funcionario\data.js'></script>
+  <script src='src\js\funcionario\functions.js'></script>
+
+  <script async='async' src='src\js\funcionario\listener.js'></script>	
 	
   <script>
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-			if ('Notification' in window) {
-				Notification.requestPermission().then(function (permission) {
-					if (permission === 'granted') {
-						scheduleNotifications(notificationTimes);
-					}
-				});
-			}
-		}).catch(function(error) {
-			console.error('Service Worker registration failed:', error);
-		});
-	}
+	    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+	        console.log('Service Worker is active and registered.');
+	
+	        // Check if the service worker is ready
+	        navigator.serviceWorker.ready.then(function() {
+	            console.log('Service Worker is ready and active.');
 
-	function scheduleNotifications(notificationTimes) {
-		notificationTimes.forEach(function(time) {
-			const notificationData = {
-				action: 'scheduleNotification',
-				hour: time.hour,
-				minute: time.minute,
-				content: time.content
-			};
-		});
-	}
+	        }).catch(function(error) {
+	            console.log('Error with service worker readiness:', error);
+	        });
+	    }).catch(function(error) {
+	        console.error('Service Worker registration failed:', error);
+	    });
+	} else {
+	    console.log('Service Worker is not supported in this browser.');
+	};
   </script>
-
-  <script async='async' src='src\js\funcionario\debug.js'></script>
-  <script async='async' src='src\js\funcionario\data.js'></script>
-  <script async='async' src='src\js\funcionario\language.js'></script>	
-  <script async='async' src='src\js\funcionario\listener.js'></script>
 
 </head>
 	
 <body>
-
-  <script async='async' src='src\js\funcionario\global.js'></script>
-  <script async='async' src='src\js\funcionario\events.js'></script>
-  <script async='async' src='src\js\funcionario\base.js'></script>
-  <script async='async' src='src\js\funcionario\functions.js'></script>
-
-  <script src='src\js\funcionario\api.js' defer></script>
-  <script src='src\js\funcionario\ui.js' defer></script>
+  <!-- Body - Scripts -->
+  <script src='src\js\funcionario\ui.js' defer></script>	
+  <script src='src\js\funcionario\events.js' defer></script>
+  <script src='src\js\funcionario\base.js' defer></script>	
 		
-<!-- Language Fetch -->
-<script type='text/javascript'> 
-  var language;
-  async function getLanguage() {
-    try {
-      const response = await fetch('public/language/pt-br.json');
-      const i18n = await response.json();
-      language = ReceiveString(i18n);
-      showNotification('Bem-vindo'); // showNotification(language.AppName);
-	
-    } catch (error) {
-      console.error('Error: ', error);
-    }
-  }
-</script>
-
   <form id='myForm' action='/submit' method='POST'>
 	<div class='centered-container'>
 		<div class='message-box' id='message'></div>
-		<input type='checkbox' id='toggle' onClick='onChange()'/>	
+		<input type='checkbox' id='toggle'/>	
 		<label for='toggle' class='toy-toggle'>
 			<span class='border1'></span>
 			<span class='border2'></span>
@@ -114,10 +76,10 @@
 			<div class='button-container'>
 				<button id='acceptButton'>✔</button>
 				<button id='denyButton'>✘</button>
-			
+			</div>
 		</div>
 		
-      <input type='hidden' id='textBox' name='textBox'>  
+      <input type='hidden' id='userInput' name='textBox'>  
       <input type='hidden' id='latitude' name='latitude'>
       <input type='hidden' id='longitude' name='longitude'>  
       <input type='submit' id='hiddenSubmit' style='display:none'>
